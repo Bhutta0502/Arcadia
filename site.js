@@ -176,7 +176,7 @@
       if (e.key === 'Enter') doLogout();
     }
     function doLogout() {
-      try { sessionStorage.removeItem(AUTH_KEY); } catch(e) {}
+      try { sessionStorage.removeItem('sobha_site_auth'); } catch(e) {}
       location.reload();
     }
     modal.querySelector('[data-action="cancel"]').addEventListener('click', close);
