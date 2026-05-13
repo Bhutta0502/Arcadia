@@ -18,12 +18,14 @@
       stack:   '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2 L14 5 L8 8 L2 5 Z"/><path d="M2 8 L8 11 L14 8"/><path d="M2 11 L8 14 L14 11"/></svg>',
       flow:    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6 Q4 3 7 6 T13 6"/><path d="M1 11 Q4 8 7 11 T13 11"/><path d="M11 4 L13 6 L11 8"/></svg>',
       walk:    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="3" r="1.3"/><path d="M9 5 L7 9 L9 10 L8 14"/><path d="M9 10 L11 13"/><path d="M7 9 L4 11"/></svg>',
-      cal:     '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="10.5" rx="1"/><path d="M2 7 H14"/><path d="M5 2 V5"/><path d="M11 2 V5"/></svg>'
+      cal:     '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="10.5" rx="1"/><path d="M2 7 H14"/><path d="M5 2 V5"/><path d="M11 2 V5"/></svg>',
+      map:     '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3.5 L6 2 L10 4 L14 2.5 V12.5 L10 14 L6 12 L2 13.5 Z"/><path d="M6 2 V12"/><path d="M10 4 V14"/></svg>'
     };
     // Active page detection
     var isSalesPlan = /\/index\.html$|\/$/.test(path) && !/\/uae\//.test(path);
     var isYearEnd = /\/uae\/finance\/2025-year-end\//.test(path);
     var isIndia = /\/india\.html$/.test(path);
+    var isArcadia = /\/index\.html$|\/$/.test(path) && !/\/uae\//.test(path) && !isSalesPlan;
     var isUAE = /\/uae\.html$/.test(path);
     // Active tab detection (from ?tab= or #tab=)
     var src = (location.hash || '').replace(/^#/, '') || (location.search || '').replace(/^\?/, '');
@@ -52,6 +54,12 @@
       '          <li><a class="dr-item' + tabActive('cashflow') + '" href="' + root + 'index.html?tab=cashflow"><span class="dr-ic">' + icons.flow + '</span><span class="dr-label">Cashflow Statement</span></a></li>' +
       '          <li><a class="dr-item' + tabActive('pnl') + '" href="' + root + 'index.html?tab=pnl"><span class="dr-ic">' + icons.pl + '</span><span class="dr-label">P&amp;L Statement</span></a></li>' +
       '          <li><a class="dr-item' + tabActive('overheads') + '" href="' + root + 'index.html?tab=overheads"><span class="dr-ic">' + icons.stack + '</span><span class="dr-label">Overheads</span></a></li>' +
+      '        </ul>' +
+      '      </div>' +
+      '      <div class="dr-sub">' +
+      '        <a class="dr-sub-head-big" href="' + root + 'index.html">Commercial</a>' +
+      '        <ul>' +
+      '          <li><a class="dr-item' + active(isArcadia) + '" href="' + root + 'index.html"><span class="dr-ic">' + icons.map + '</span><span class="dr-label">Arcadia</span></a></li>' +
       '        </ul>' +
       '      </div>' +
       '    </div>' +
