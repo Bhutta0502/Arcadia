@@ -176,7 +176,7 @@
       if (e.key === 'Enter') doLogout();
     }
     function doLogout() {
-      try { sessionStorage.removeItem('sobha_site_auth'); } catch(e) {}
+      try { localStorage.removeItem('sobha_site_auth'); } catch(e) {}
       location.reload();
     }
     modal.querySelector('[data-action="cancel"]').addEventListener('click', close);
@@ -198,15 +198,7 @@
     var wrap = document.createElement('div');
     wrap.className = 'nav-actions nav-actions-injected';
 
-    var theme = document.createElement('button');
-    theme.className = 'theme-toggle';
-    theme.setAttribute('aria-label', 'Toggle theme');
-    theme.addEventListener('click', function() {
-      applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
-    });
-
-    // Log out moved into drawer footer; topbar only holds theme + hamburger now.
-    wrap.appendChild(theme);
+    // Log out moved into drawer footer; topbar only holds hamburger now.
 
     // Ensure a hamburger exists (dashboard's React topbar doesn't include one)
     if (!ham) {

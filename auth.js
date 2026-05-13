@@ -5,7 +5,7 @@
   var AUTH_KEY = 'sobha_site_auth';
 
   try {
-    if (sessionStorage.getItem(AUTH_KEY) === '1') return;
+    if (localStorage.getItem(AUTH_KEY) === '1') return;
   } catch(e) {}
 
   // Resolve where this script lives (root vs subfolder) so we can
@@ -104,7 +104,7 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       if (input.value === AUTH_PASSWORD) {
-        try { sessionStorage.setItem(AUTH_KEY, '1'); } catch(e) {}
+        try { localStorage.setItem(AUTH_KEY, '1'); } catch(e) {}
         var path = (location.pathname || '').replace(/\/+$/, '');
         var isHome = /(^|\/)home\.html$/i.test(path);
         if (!isHome) {
