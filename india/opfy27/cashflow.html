@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="../../auth.js"></script>
+<meta charset="utf-8">
+<title>Group MIS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="../../home.html" class="brand">
+    <img class="brand-mark" src="assets/sobha-logo.png" alt="SOBHA">
+    <span class="brand-divider"></span>
+    <span class="brand-meta">
+      <span class="brand-meta-label">FY 2026-27</span>
+      <span class="brand-meta-title">Operational Plan · <em>Cash Flow</em></span>
+    </span>
+  </a>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="sales.html">Sales</a>
+    <a href="walkthrough.html">Walkthrough</a>
+    <a href="cashflow.html" class="active">Cash Flow</a>
+    <a href="pnl.html">P&amp;L</a>
+    <a href="overheads.html">Overheads</a>
+  </nav>
+</header>
+
+<div class="page-head">
+  <div>
+    <div class="crumb">Liquidity &amp; Movement</div>
+    <h1>Cash Flow</h1>
+    <div class="blurb">Consolidated cash inflows / outflows, net position with &amp; without land, segment-wise CFS, city-wise residential cash flow, land payment schedule, capex plan and finance cost.</div>
+  </div>
+  <div class="toggles">
+    <button class="btn-toggle on" id="vConsol">Consolidated</button>
+    <button class="btn-toggle" id="vQuarterly">Quarterly</button>
+  </div>
+</div>
+
+<!-- KPI strip -->
+<section class="kpi-strip" style="grid-template-columns: repeat(6, 1fr);">
+  <div class="kpi"><span class="accent-bar"></span>
+    <div class="label">Total Cash Inflow</div>
+    <div class="val lg">109,011</div>
+    <div class="delta up">▲ 37.9% <span class="vs">FY26A 79,070</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Total Cash Outflow</div>
+    <div class="val lg">112,496</div>
+    <div class="delta down">▲ 45.4% <span class="vs">FY26A 77,376</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Net Cash Flow</div>
+    <div class="val lg neg-text" style="color:var(--neg)">-3,485</div>
+    <div class="delta down">▼ 305.7% <span class="vs">FY26A +1,694</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">NCF before Land</div>
+    <div class="val lg" style="color:var(--pos)">+15,942</div>
+    <div class="delta up">▲ 11.0% <span class="vs">FY26A +14,371</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Land Payments</div>
+    <div class="val lg">19,427</div>
+    <div class="delta down">▲ 53.3% <span class="vs">committed 8,990 + strategic 10,437</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Capex (Gen + Land)</div>
+    <div class="val lg">25,894</div>
+    <div class="delta down"><span class="vs">Capex 6,467 · Strategic 10,437 + Committed 8,990</span></div>
+  </div>
+</section>
+
+<!-- Row 1: Waterfall + Quarterly trend -->
+<div class="row" style="grid-template-columns: 5fr 4fr; gap: 24px;">
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">FY27E Cashflow Waterfall</div>
+      <div class="panel-sub">Inflow → Outflow → Net · Rs. Mn</div>
+    </div>
+    <svg class="chart" id="waterfall" viewBox="0 0 800 360" preserveAspectRatio="none"></svg>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Quarterly Cash Position</div>
+      <div class="panel-sub">Q1 → Q4 · cumulative net cash</div>
+    </div>
+    <svg class="chart" id="qCash" viewBox="0 0 460 360" preserveAspectRatio="none"></svg>
+  </div>
+</div>
+
+<!-- Row 2: Detailed CFS lines -->
+<div class="section-h">Detailed Cash Flow Statement (Pages 14–15)</div>
+<div class="row" style="grid-template-columns: 1fr 1fr; gap: 24px;">
+  <div class="panel flat">
+    <div class="panel-strip">
+      <div class="panel-title" style="color:var(--pos)">Cash Inflow · ₹109,011 Mn</div>
+    </div>
+    <table class="dt" id="inflowTable">
+      <thead>
+        <tr>
+          <th class="l">Line Item</th>
+          <th>FY27E</th>
+          <th>FY26A</th>
+          <th>Q1</th>
+          <th>Q2</th>
+          <th>Q3</th>
+          <th>Q4</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="panel flat">
+    <div class="panel-strip">
+      <div class="panel-title" style="color:var(--neg)">Cash Outflow · ₹112,496 Mn</div>
+    </div>
+    <table class="dt" id="outflowTable">
+      <thead>
+        <tr>
+          <th class="l">Line Item</th>
+          <th>FY27E</th>
+          <th>FY26A</th>
+          <th>Q1</th>
+          <th>Q2</th>
+          <th>Q3</th>
+          <th>Q4</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Row 3: Segment cash flow -->
+<div class="section-h">Segment-Wise Cash Flow (Page 16)</div>
+<div class="panel flat">
+  <table class="dt" id="segTable">
+    <thead>
+      <tr>
+        <th class="l">Segment</th>
+        <th>Billing</th>
+        <th>Inflow</th>
+        <th>Outflow</th>
+        <th>Net CF</th>
+        <th>Operating In</th>
+        <th>Operating Out</th>
+        <th>NCF Operating</th>
+        <th>NCF Non-Op</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- Row 4: City-wise residential cash flow + Land payments -->
+<div class="row" style="grid-template-columns: 3fr 2fr; gap: 24px;">
+  <div class="panel flat">
+    <div class="panel-strip">
+      <div class="panel-title">City-Wise Residential Cash Flow (Page 19)</div>
+    </div>
+    <table class="dt" id="cityCfsTable">
+      <thead>
+        <tr>
+          <th class="l">City</th>
+          <th>Billing</th>
+          <th>Inflow</th>
+          <th>Outflow</th>
+          <th>Net CF</th>
+          <th>NCF Operating</th>
+          <th>Land Payment</th>
+          <th>Capex</th>
+          <th>Net Position</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Land Payment Schedule</div>
+      <div class="panel-sub">FY27E ₹19,427 Mn · 30.93 Mn sft acquired</div>
+    </div>
+    <svg class="chart" id="landChart" viewBox="0 0 380 380" preserveAspectRatio="none"></svg>
+    <div class="legend">
+      <span><span class="sw" style="background: var(--accent)"></span>FY27E Payment</span>
+      <span><span class="sw" style="background: var(--bg-3)"></span>Balance carry-fwd</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 5: Capex breakdown + Finance cost -->
+<div class="section-h">Capex Plan (Page 22) · Finance Cost (Page 42)</div>
+<div class="row" style="grid-template-columns: 3fr 2fr; gap: 24px;">
+  <div class="panel flat">
+    <div class="panel-strip">
+      <div class="panel-title">Capex · ₹6,467 Mn (FY27E)</div>
+      <div class="panel-sub">Excludes ₹19,427 Mn land payments</div>
+    </div>
+    <table class="dt" id="capexTable">
+      <thead>
+        <tr>
+          <th class="l">Category / Item</th>
+          <th>Q1</th>
+          <th>Q2</th>
+          <th>Q3</th>
+          <th>Q4</th>
+          <th>FY27E</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="panel flat">
+    <div class="panel-strip">
+      <div class="panel-title">Finance Cost</div>
+      <div class="panel-sub">Quarterly · Rs. Mn</div>
+    </div>
+    <table class="dt" id="finTable">
+      <thead>
+        <tr>
+          <th class="l">Item</th>
+          <th>Q1</th>
+          <th>Q2</th>
+          <th>Q3</th>
+          <th>Q4</th>
+          <th>FY27E</th>
+          <th>FY26A</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="note">
+  <b>Note</b> · Net Cashflow before Land excludes ₹19,427 Mn FY27E land payments, comprising committed (₹8,990) and strategic land bank (₹10,437). RE Residential drives ₹96,601 Mn (95.8%) of total operating inflow.
+</div>
+
+<div class="foot">
+  <span>INTERNAL AND CONFIDENTIAL</span>
+</div>
+
+<div class="tt" id="tooltip"></div>
+
+<script src="data.js"></script>
+<script src="cashflow.js"></script>
+<script src="../../site.js"></script>
+</body>
+</html>

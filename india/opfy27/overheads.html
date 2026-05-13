@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="../../auth.js"></script>
+<meta charset="utf-8">
+<title>Group MIS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="../../home.html" class="brand">
+    <img class="brand-mark" src="assets/sobha-logo.png" alt="SOBHA">
+    <span class="brand-divider"></span>
+    <span class="brand-meta">
+      <span class="brand-meta-label">FY 2026-27</span>
+      <span class="brand-meta-title">Operational Plan · <em>Overheads</em></span>
+    </span>
+  </a>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="sales.html">Sales</a>
+    <a href="walkthrough.html">Walkthrough</a>
+    <a href="cashflow.html">Cash Flow</a>
+    <a href="pnl.html">P&amp;L</a>
+    <a href="overheads.html" class="active">Overheads</a>
+  </nav>
+</header>
+
+<div class="page-head">
+  <div>
+    <div class="crumb">Cost Discipline</div>
+    <h1>Overheads</h1>
+    <div class="blurb">Direct + allocated overheads, city-wise residential overheads (₹3,545 Mn RE) and other-business overheads (₹624 Mn), normalised against sales, cash inflow and revenue.</div>
+  </div>
+  <div class="toggles">
+    <button class="btn-toggle on" id="tAll">All Businesses</button>
+    <button class="btn-toggle" id="tRE">RE Only</button>
+    <button class="btn-toggle" id="tOther">Other Only</button>
+  </div>
+</div>
+
+<section class="kpi-strip" style="grid-template-columns: repeat(6, 1fr);">
+  <div class="kpi"><span class="accent-bar"></span>
+    <div class="label">Total Overheads</div>
+    <div class="val lg">4,169</div>
+    <div class="delta down">▲ 42.2% <span class="vs">FY26A 2,932</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">% of Sales</div>
+    <div class="val lg">2.3%</div>
+    <div class="delta up">▼ 130 bps <span class="vs">on ₹181,776 Mn sales</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">% of Cash Inflow</div>
+    <div class="val lg">3.8%</div>
+    <div class="delta up"><span class="vs">on ₹109,011 Mn inflow</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">% of Revenue</div>
+    <div class="val lg">6.1%</div>
+    <div class="delta up"><span class="vs">on ₹68,159 Mn revenue</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Direct Overheads</div>
+    <div class="val lg">2,108</div>
+    <div class="delta down"><span class="vs">city / business attributable</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Allocated Overheads</div>
+    <div class="val lg">2,061</div>
+    <div class="delta down"><span class="vs">corporate apportionment</span></div>
+  </div>
+</section>
+
+<!-- Row 1: Bar chart by city + ratio scatter -->
+<div class="row" style="grid-template-columns: 5fr 4fr; gap: 24px;">
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Overheads · By Geography &amp; Business</div>
+      <div class="panel-sub">Direct (solid) + Allocated (lighter) · Rs. Mn</div>
+    </div>
+    <svg class="chart" id="ohBar" viewBox="0 0 800 400" preserveAspectRatio="none"></svg>
+    <div class="legend">
+      <span><span class="sw" style="background: var(--accent)"></span>Direct</span>
+      <span><span class="sw" style="background: var(--info)"></span>Allocated</span>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Efficiency Map</div>
+      <div class="panel-sub">Sales (x) vs % of Sales (y) · radius ∝ overhead</div>
+    </div>
+    <svg class="chart" id="ohScatter" viewBox="0 0 460 400" preserveAspectRatio="xMidYMid meet"></svg>
+  </div>
+</div>
+
+<!-- Row 2: City-wise RE table -->
+<div class="section-h">RE Residential · City-Wise Overheads</div>
+<div class="panel flat">
+  <table class="dt" id="reTable">
+    <thead>
+      <tr>
+        <th class="l">City</th>
+        <th>Sales</th>
+        <th>Cash Inflow</th>
+        <th>Revenue</th>
+        <th>Direct OH</th>
+        <th>Allocated OH</th>
+        <th>Total OH</th>
+        <th>% of Sales</th>
+        <th>% of Cash</th>
+        <th>% of Revenue</th>
+        <th>Efficiency</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- Row 3: Other businesses table -->
+<div class="section-h">Other Businesses · Overheads</div>
+<div class="panel flat">
+  <table class="dt" id="otherTable">
+    <thead>
+      <tr>
+        <th class="l">Business</th>
+        <th>Sales</th>
+        <th>Cash Inflow</th>
+        <th>Revenue</th>
+        <th>Direct OH</th>
+        <th>Allocated OH</th>
+        <th>Total OH</th>
+        <th>% of Sales</th>
+        <th>% of Cash</th>
+        <th>% of Revenue</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- Row 4: % of Sales benchmark + breakdown chart -->
+<div class="row" style="grid-template-columns: 1fr 1fr; gap: 24px;">
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Overhead Intensity · % of Sales</div>
+      <div class="panel-sub">Lower is better · benchmark line at consolidated 2.3%</div>
+    </div>
+    <svg class="chart" id="benchChart" viewBox="0 0 600 360" preserveAspectRatio="none"></svg>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Direct vs Allocated Split</div>
+      <div class="panel-sub">By geography &amp; business · stacked</div>
+    </div>
+    <svg class="chart" id="splitChart" viewBox="0 0 600 360" preserveAspectRatio="none"></svg>
+  </div>
+</div>
+
+<div class="note">
+  <b>Notes</b> · Direct overheads = costs attributable to a specific city / business · Allocated = corporate apportionment via revenue / cash basis · Outliers (Hosur ₹4.8 Mn / GIFT 199% of revenue) reflect early-stage projects with limited recognition.
+</div>
+
+<div class="foot">
+  <span>INTERNAL AND CONFIDENTIAL</span>
+</div>
+
+<div class="tt" id="tooltip"></div>
+
+<script src="data.js"></script>
+<script src="overheads.js"></script>
+<script src="../../site.js"></script>
+</body>
+</html>

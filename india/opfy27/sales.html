@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="../../auth.js"></script>
+<meta charset="utf-8">
+<title>Group MIS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="../../home.html" class="brand">
+    <img class="brand-mark" src="assets/sobha-logo.png" alt="SOBHA">
+    <span class="brand-divider"></span>
+    <span class="brand-meta">
+      <span class="brand-meta-label">FY 2026-27</span>
+      <span class="brand-meta-title">Operational Plan · <em>Sales & Launches</em></span>
+    </span>
+  </a>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="sales.html" class="active">Sales</a>
+    <a href="walkthrough.html">Walkthrough</a>
+    <a href="cashflow.html">Cash Flow</a>
+    <a href="pnl.html">P&amp;L</a>
+    <a href="overheads.html">Overheads</a>
+  </nav>
+</header>
+
+<div class="page-head">
+  <div>
+    <div class="crumb">Operational Overview</div>
+    <h1>Sales &amp; Launches</h1>
+  </div>
+</div>
+
+<!-- KPI strip -->
+<section class="kpi-strip" style="grid-template-columns: repeat(6, 1fr);">
+  <!--KPI strip-->
+  
+  <div class="kpi"><span class="accent-bar"></span>
+    <div class="label">RE TOTAL SALES</div>
+    <div class="val lg">173,397</div>
+    <div class="delta up">▲ 113.1% <span class="vs">vs 81,359 FY26A</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Sobha Share Sales</div>
+    <div class="val lg">136,442</div>
+    <div class="delta up">▲ 103.4% <span class="vs">vs 67,062 FY26A</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Avg Realisation</div>
+    <div class="val lg">15,313/sft</div>
+    <div class="delta up"><span class="vs">basic + car park, w/o GST</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">OPENING INVENTORY</div>
+    <div class="val lg">170,898</div>
+    <div class="delta up"><span class="vs">10.51 Mn sft across 46 projects</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">NEW LAUNCHES</div>
+    <div class="val lg">329,264</div>
+    <div class="delta up">▲ 18 projects <span class="vs">22.24 Mn sft</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Closing Inventory</div>
+    <div class="val lg">326,765</div>
+    <div class="delta up"><span class="vs">34.7% of Inventory Sold</span></div>
+  </div>
+</section>
+
+<!-- Quick nav -->
+<nav class="quicknav">
+  <a href="#sec-hier" class="qn"><span class="qn-num">01</span><span class="qn-label">Sales Plan - Consolidated</span></a>
+  <a href="#sec-inv-proj" class="qn"><span class="qn-num">02</span><span class="qn-label">Inventory Movement - City and Project Wise</span></a>
+  <a href="#sec-launch" class="qn"><span class="qn-num">03</span><span class="qn-label">Project Launch Calendar</span></a>
+</nav>
+
+<!-- Row 1.5: Sales hierarchy (Division / Region / City) -->
+<div class="section-h" id="sec-hier">Sales Plan · <em>Division · Region · City</em></div>
+<div class="panel flat">
+  <div class="table-head">
+    <div>
+      <div class="panel-title">Consolidated Sales · FY27E vs FY26A</div>
+    </div>
+  </div>
+  <div class="scroll-tall">
+    <table class="dt" id="hierTable">
+      <thead>
+        <tr>
+          <th class="l">Division / Region / City</th>
+          <th>Total Sales · FY27E</th>
+          <th>Sobha Share</th>
+          <th>Sobha Share %</th>
+          <th>Growth vs FY26</th>
+          <th>FY26 Actual</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Row 2: Project-wise inventory movement -->
+<div class="section-h" id="sec-inv-proj">RE Inventory
+Movement
+· City &amp; Project-Wise</div>
+<div class="panel flat">
+  <div class="table-head">
+    <div>
+      <div class="panel-title"></div>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center">
+      <span class="seg" id="segProjInvShare">
+        <button class="seg-btn on" data-share="total">Total</button>
+        <button class="seg-btn" data-share="sobha">Sobha Share</button>
+      </span>
+      <span class="seg" id="segProjInvUnit">
+        <button class="seg-btn on" data-unit="mn">₹ Mn</button>
+        <button class="seg-btn" data-unit="sft">SBA</button>
+        <button class="seg-btn" data-unit="units">Units</button>
+        <button class="seg-btn" data-unit="real">Avg Real</button>
+      </span>
+      <div class="search"><input id="ongoSearch" placeholder="Search project, city or status…"></div>
+    </div>
+  </div>
+  <div class="scroll-tall">
+    <table class="dt" id="ongoTable">
+      <thead>
+        <tr>
+          <th class="l">Project</th>
+          <th class="l">Status</th>
+          <th>Opening Inv</th>
+          <th>New Launches</th>
+          <th>Saleable Inv</th>
+          <th>FY27E Sales</th>
+          <th>% Sold</th>
+          <th>Closing Inv</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Row 3: Launch calendar -->
+<div class="section-h" id="sec-launch">Project Launch <em>Calendar</em></div>
+<div class="panel flat">
+  <div class="panel-strip">
+    <div>
+      <div class="panel-title">18 launches across FY27E · ₹329,264 Mn inventory</div>
+    </div>
+  </div>
+  <div id="launchCal"></div>
+</div>
+
+
+
+<div class="foot">
+  <span>INTERNAL AND CONFIDENTIAL</span>
+</div>
+
+<div class="tt" id="tooltip"></div>
+
+<!-- Drill-down drawer -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div>
+      <div class="crumb">City Drill-Down</div>
+      <h3 id="drawerTitle">City</h3>
+    </div>
+    <button class="drawer-close" id="drawerClose" aria-label="Close">×</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<script src="data.js"></script>
+<script src="sales.js"></script>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+(function(){
+  const btn = document.getElementById('backToTop');
+  let timer = null;
+  let lastY = window.scrollY;
+  function show(){
+    if(window.scrollY < 200) return;
+    btn.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(()=> btn.classList.remove('show'), 3000);
+  }
+  window.addEventListener('scroll', () => {
+    if(Math.abs(window.scrollY - lastY) > 10){
+      show();
+      lastY = window.scrollY;
+    }
+  });
+})();
+</script>
+<script src="../../site.js"></script>
+</body>
+</html>

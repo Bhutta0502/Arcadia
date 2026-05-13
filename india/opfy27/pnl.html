@@ -1,0 +1,1926 @@
+<!DOCTYPE html><html lang="en"><head>
+
+
+<script src="../../auth.js"></script>
+<meta charset="utf-8">
+<title>Group MIS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../site.css">
+<style data-designer-overlay="1"></style></head>
+<body>
+
+<header class="topbar">
+  <a href="../../home.html" class="brand">
+    <img class="brand-mark" src="assets/sobha-logo.png" alt="SOBHA">
+    <span class="brand-divider"></span>
+    <span class="brand-meta">
+      <span class="brand-meta-label">FY 2026–27</span>
+      <span class="brand-meta-title">Operational Plan · <em>P&amp;L</em></span>
+    </span>
+  </a>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="sales.html">Sales</a>
+    <a href="walkthrough.html">Walkthrough</a>
+    <a href="cashflow.html">Cash Flow</a>
+    <a href="pnl.html" class="active">P&amp;L</a>
+    <a href="overheads.html">Overheads</a>
+  </nav>
+</header>
+
+<div class="page-head">
+  <div>
+    <div class="crumb">PROFITABILITY</div>
+    <h1>Profit &amp; Loss</h1>
+  </div>
+  <div class="toggles" style="display:none">
+    <button class="btn-toggle on" id="vAbs">Absolute</button>
+    <button class="btn-toggle" id="vMargin">% Margin</button>
+  </div>
+</div>
+
+<!-- KPI strip -->
+<section class="kpi-strip" style="grid-template-columns: repeat(6, 1fr);">
+  <div class="kpi"><span class="accent-bar"></span>
+    <div class="label">Revenue</div>
+    <div class="val lg">68,013</div>
+    <div class="delta up">▲ 26.3% <span class="vs">FY26A 53,838</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Gross Margin</div>
+    <div class="val lg">18,763</div>
+    <div class="delta up">▲ 52.5% <span class="vs">FY26A 12,308</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Overheads</div>
+    <div class="val lg">12,916</div>
+    <div class="delta up">▲ 33.8% <span class="vs">FY26A 9,650</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">PBT</div>
+    <div class="val lg">5,849</div>
+    <div class="delta up">▲ 122.1% <span class="vs">FY26A 2,633</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">PAT</div>
+    <div class="val lg">4,376</div>
+    <div class="delta up">▲ 122.4% <span class="vs">FY26A 1,968</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">Profit after CSR</div>
+    <div class="val lg">4,226</div>
+    <div class="delta up">▲ 121.5% <span class="vs">FY26A 1,908</span></div>
+  </div>
+</section>
+
+<!-- Quick nav -->
+<nav class="quicknav">
+  <a href="#sec-segment" class="qn"><span class="qn-num">01</span><span class="qn-label">Segment-Wise P&amp;L</span></a>
+  <a href="#sec-proj" class="qn"><span class="qn-num">02</span><span class="qn-label">Project-Wise Margin</span></a>
+</nav>
+
+<!-- Row 3: Segment P&L -->
+<div class="section-h" id="sec-segment" style="display:flex;align-items:baseline;gap:24px;flex-wrap:wrap">
+  <span>Segment-Wise P&amp;L</span>
+  <div class="toggles" id="segPeriod" style="display:flex;gap:6px;font-size:11px;align-items:center">
+    <button class="btn-toggle on" data-p="fy27">FY27E</button>
+    <button class="btn-toggle" data-p="q1" title="Real Estate only · source: page 31">Q1</button>
+    <button class="btn-toggle" data-p="q2" title="Real Estate only · source: page 31">Q2</button>
+    <button class="btn-toggle" data-p="q3" title="Real Estate only · source: page 31">Q3</button>
+    <button class="btn-toggle" data-p="q4" title="Real Estate only · source: page 31">Q4</button>
+    <span style="display:inline-block;width:18px"></span>
+    <button class="btn-toggle" data-p="fy26">FY26A</button>
+  </div>
+</div>
+<div class="row" style="grid-template-columns: 1fr; gap: 24px;">
+<div class="panel flat">
+  <div>
+    <table class="dt" id="segTable" data-period="fy27">
+      <thead>
+        <tr>
+          <th class="l">Segment</th>
+          <th>Revenue</th>
+          <th>Cost of Sales</th>
+          <th>Gross Margin</th>
+          <th>GM %</th>
+          <th>Overheads</th>
+          <th>PBT</th>
+          <th>PAT</th>
+          <th>PAT %</th>
+        </tr>
+      </thead>
+      <tbody><tr class="total-top">
+        <td class="l"><strong>Total · Pan India</strong></td>
+        <td class="drill" data-ctx="__total" data-kind="rev"><strong>68,014</strong></td>
+        <td class="dim drill" data-ctx="__total" data-kind="cos"><strong>49,251</strong></td>
+        <td class="pos"><strong>18,764</strong></td>
+        <td><strong>27.6%</strong></td>
+        <td class="dim drill" data-ctx="__total" data-kind="oh"><strong>12,916</strong></td>
+        <td class="pos"><strong>5,847</strong></td>
+        <td class="pos"><strong>4,378</strong></td>
+        <td class="pos"><strong>6.4%</strong></td>
+      </tr><tr class="seg-group clickrow" data-g="re" data-open="1">
+        <td class="l"><span class="caret">▾</span> <strong>Real Estate</strong> <span class="dim">· 6</span></td>
+        
+        <td class="drill" data-ctx="__group:re" data-kind="rev"><strong>59,490</strong></td>
+        <td class="dim drill" data-ctx="__group:re" data-kind="cos"><strong>43,928</strong></td>
+        <td class="pos"><strong>15,561</strong></td>
+        <td><strong>26.2%</strong></td>
+        <td class="dim drill" data-ctx="__group:re" data-kind="oh"><strong>11,949</strong></td>
+        <td class="pos"><strong>3,613</strong></td>
+        <td class="pos"><strong>2,704</strong></td>
+        <td class="pos"><strong>4.5%</strong></td>
+      </tr><tr class="seg-child" data-parent="re" style="">
+          <td class="l" style="padding-left:36px">RE Residential</td>
+          <td class="drill" data-ctx="RE Residential" data-kind="rev">50,244</td>
+          <td class="dim drill" data-ctx="RE Residential" data-kind="cos">34,777</td>
+          <td class="pos">15,467</td>
+          <td>30.8%</td>
+          <td class="dim drill" data-ctx="RE Residential" data-kind="oh" title="Operating overheads + Interest + Depreciation">11,927</td>
+          <td class="pos">3,540</td>
+          <td class="pos">2,649</td>
+          <td class="pos">5.3%</td>
+        </tr><tr class="seg-child" data-parent="re" style="">
+          <td class="l" style="padding-left:36px">RE Gross Accounting</td>
+          <td class="drill" data-ctx="RE Gross Accounting" data-kind="rev">6,669</td>
+          <td class="dim drill" data-ctx="RE Gross Accounting" data-kind="cos">6,412</td>
+          <td class="pos">257</td>
+          <td>3.9%</td>
+          <td class="dim drill" data-ctx="RE Gross Accounting" data-kind="oh" title="Operating overheads + Interest + Depreciation">0</td>
+          <td class="pos">257</td>
+          <td class="pos">193</td>
+          <td class="pos">2.9%</td>
+        </tr><tr class="seg-child" data-parent="re" style="">
+          <td class="l" style="padding-left:36px">RE DM</td>
+          <td class="drill" data-ctx="RE DM" data-kind="rev">1,308</td>
+          <td class="dim drill" data-ctx="RE DM" data-kind="cos">1,223</td>
+          <td class="pos">85</td>
+          <td>6.5%</td>
+          <td class="dim drill" data-ctx="RE DM" data-kind="oh" title="Operating overheads + Interest + Depreciation">0</td>
+          <td class="pos">85</td>
+          <td class="pos">64</td>
+          <td class="pos">4.9%</td>
+        </tr><tr class="seg-child" data-parent="re" style="">
+          <td class="l" style="padding-left:36px">FMD</td>
+          <td class="drill" data-ctx="FMD" data-kind="rev">919</td>
+          <td class="dim drill" data-ctx="FMD" data-kind="cos">844</td>
+          <td class="pos">74</td>
+          <td>8.1%</td>
+          <td class="dim drill" data-ctx="FMD" data-kind="oh" title="Operating overheads + Interest + Depreciation">22</td>
+          <td class="pos">53</td>
+          <td class="pos">39</td>
+          <td class="pos">4.2%</td>
+        </tr><tr class="seg-child" data-parent="re" style="">
+          <td class="l" style="padding-left:36px">RE Other income</td>
+          <td class="drill" data-ctx="RE Other income" data-kind="rev">350</td>
+          <td class="dim drill" data-ctx="RE Other income" data-kind="cos">672</td>
+          <td class="neg">-322</td>
+          <td>-92.0%</td>
+          <td class="dim drill" data-ctx="RE Other income" data-kind="oh" title="Operating overheads + Interest + Depreciation">0</td>
+          <td class="neg">-322</td>
+          <td class="neg">-241</td>
+          <td class="neg">-68.9%</td>
+        </tr><tr class="seg-child" data-parent="re" style="">
+          <td class="l" style="padding-left:36px">Land Sales</td>
+          <td class="drill" data-ctx="Land Sales" data-kind="rev">0</td>
+          <td class="dim drill" data-ctx="Land Sales" data-kind="cos">0</td>
+          <td class="pos">0</td>
+          <td>0.0%</td>
+          <td class="dim drill" data-ctx="Land Sales" data-kind="oh" title="Operating overheads + Interest + Depreciation">0</td>
+          <td class="pos">0</td>
+          <td class="pos">0</td>
+          <td class="pos">–</td>
+        </tr><tr class="seg-group clickrow" data-g="com" data-open="1">
+        <td class="l"><span class="caret">▾</span> <strong>Commercial</strong> <span class="dim">· 5</span></td>
+        
+        <td class="drill" data-ctx="__group:com" data-kind="rev"><strong>934</strong></td>
+        <td class="dim drill" data-ctx="__group:com" data-kind="cos"><strong>333</strong></td>
+        <td class="pos"><strong>603</strong></td>
+        <td><strong>64.6%</strong></td>
+        <td class="dim drill" data-ctx="__group:com" data-kind="oh"><strong>180</strong></td>
+        <td class="pos"><strong>423</strong></td>
+        <td class="pos"><strong>318</strong></td>
+        <td class="pos"><strong>34.0%</strong></td>
+      </tr><tr class="seg-child" data-parent="com" style="">
+          <td class="l" style="padding-left:36px">1 Sobha</td>
+          <td class="drill" data-ctx="1 Sobha" data-kind="rev">527</td>
+          <td class="dim drill" data-ctx="1 Sobha" data-kind="cos">145</td>
+          <td class="pos">383</td>
+          <td>72.6%</td>
+          <td class="dim drill" data-ctx="1 Sobha" data-kind="oh" title="Operating overheads + Interest + Depreciation">81</td>
+          <td class="pos">302</td>
+          <td class="pos">226</td>
+          <td class="pos">42.9%</td>
+        </tr><tr class="seg-child" data-parent="com" style="">
+          <td class="l" style="padding-left:36px">Sobha City Mall</td>
+          <td class="drill" data-ctx="Sobha City Mall" data-kind="rev">369</td>
+          <td class="dim drill" data-ctx="Sobha City Mall" data-kind="cos">171</td>
+          <td class="pos">198</td>
+          <td>53.7%</td>
+          <td class="dim drill" data-ctx="Sobha City Mall" data-kind="oh" title="Operating overheads + Interest + Depreciation">42</td>
+          <td class="pos">156</td>
+          <td class="pos">117</td>
+          <td class="pos">31.7%</td>
+        </tr><tr class="seg-child" data-parent="com" style="">
+          <td class="l" style="padding-left:36px">Lake View Club</td>
+          <td class="drill" data-ctx="Lake View Club" data-kind="rev">19</td>
+          <td class="dim drill" data-ctx="Lake View Club" data-kind="cos">10</td>
+          <td class="pos">9</td>
+          <td>48.2%</td>
+          <td class="dim drill" data-ctx="Lake View Club" data-kind="oh" title="Operating overheads + Interest + Depreciation">4</td>
+          <td class="pos">5</td>
+          <td class="pos">4</td>
+          <td class="pos">21.1%</td>
+        </tr><tr class="seg-child" data-parent="com" style="">
+          <td class="l" style="padding-left:36px">ICG Club</td>
+          <td class="drill" data-ctx="ICG Club" data-kind="rev">16</td>
+          <td class="dim drill" data-ctx="ICG Club" data-kind="cos">6</td>
+          <td class="pos">10</td>
+          <td>65.2%</td>
+          <td class="dim drill" data-ctx="ICG Club" data-kind="oh" title="Operating overheads + Interest + Depreciation">32</td>
+          <td class="neg">-22</td>
+          <td class="neg">-16</td>
+          <td class="neg">-100.0%</td>
+        </tr><tr class="seg-child" data-parent="com" style="">
+          <td class="l" style="padding-left:36px">Sobha Arcadia</td>
+          <td class="drill" data-ctx="Sobha Arcadia" data-kind="rev">3</td>
+          <td class="dim drill" data-ctx="Sobha Arcadia" data-kind="cos">1</td>
+          <td class="pos">3</td>
+          <td>79.8%</td>
+          <td class="dim drill" data-ctx="Sobha Arcadia" data-kind="oh" title="Operating overheads + Interest + Depreciation">21</td>
+          <td class="neg">-18</td>
+          <td class="neg">-13</td>
+          <td class="neg">-433.3%</td>
+        </tr><tr class="seg-group clickrow" data-g="con" data-open="0">
+        <td class="l"><span class="caret">▸</span> <strong>Contracts</strong> <span class="dim">· 4</span></td>
+        
+        <td class="drill" data-ctx="__group:con" data-kind="rev"><strong>2,340</strong></td>
+        <td class="dim drill" data-ctx="__group:con" data-kind="cos"><strong>1,885</strong></td>
+        <td class="pos"><strong>455</strong></td>
+        <td><strong>19.4%</strong></td>
+        <td class="dim drill" data-ctx="__group:con" data-kind="oh"><strong>104</strong></td>
+        <td class="pos"><strong>349</strong></td>
+        <td class="pos"><strong>262</strong></td>
+        <td class="pos"><strong>11.2%</strong></td>
+      </tr><tr class="seg-child" data-parent="con" style="display:none">
+          <td class="l" style="padding-left:36px">Civil</td>
+          <td class="drill" data-ctx="Civil" data-kind="rev">938</td>
+          <td class="dim drill" data-ctx="Civil" data-kind="cos">699</td>
+          <td class="pos">239</td>
+          <td>25.5%</td>
+          <td class="dim drill" data-ctx="Civil" data-kind="oh" title="Operating overheads + Interest + Depreciation">25</td>
+          <td class="pos">213</td>
+          <td class="pos">160</td>
+          <td class="pos">17.1%</td>
+        </tr><tr class="seg-child" data-parent="con" style="display:none">
+          <td class="l" style="padding-left:36px">Electrical</td>
+          <td class="drill" data-ctx="Electrical" data-kind="rev">850</td>
+          <td class="dim drill" data-ctx="Electrical" data-kind="cos">729</td>
+          <td class="pos">121</td>
+          <td>14.2%</td>
+          <td class="dim drill" data-ctx="Electrical" data-kind="oh" title="Operating overheads + Interest + Depreciation">45</td>
+          <td class="pos">76</td>
+          <td class="pos">57</td>
+          <td class="pos">6.7%</td>
+        </tr><tr class="seg-child" data-parent="con" style="display:none">
+          <td class="l" style="padding-left:36px">PHE</td>
+          <td class="drill" data-ctx="PHE" data-kind="rev">552</td>
+          <td class="dim drill" data-ctx="PHE" data-kind="cos">457</td>
+          <td class="pos">95</td>
+          <td>17.2%</td>
+          <td class="dim drill" data-ctx="PHE" data-kind="oh" title="Operating overheads + Interest + Depreciation">34</td>
+          <td class="pos">60</td>
+          <td class="pos">45</td>
+          <td class="pos">8.2%</td>
+        </tr><tr class="seg-child" data-parent="con" style="display:none">
+          <td class="l" style="padding-left:36px">Others (Contracts)</td>
+          <td class="drill" data-ctx="Others (Contracts)" data-kind="rev">0</td>
+          <td class="dim drill" data-ctx="Others (Contracts)" data-kind="cos">0</td>
+          <td class="pos">0</td>
+          <td>0.0%</td>
+          <td class="dim drill" data-ctx="Others (Contracts)" data-kind="oh" title="Operating overheads + Interest + Depreciation">0</td>
+          <td class="pos">0</td>
+          <td class="pos">0</td>
+          <td class="pos">–</td>
+        </tr><tr class="seg-group clickrow" data-g="mfg" data-open="0">
+        <td class="l"><span class="caret">▸</span> <strong>Manufacturing</strong> <span class="dim">· 3</span></td>
+        
+        <td class="drill" data-ctx="__group:mfg" data-kind="rev"><strong>3,650</strong></td>
+        <td class="dim drill" data-ctx="__group:mfg" data-kind="cos"><strong>2,594</strong></td>
+        <td class="pos"><strong>1,056</strong></td>
+        <td><strong>28.9%</strong></td>
+        <td class="dim drill" data-ctx="__group:mfg" data-kind="oh"><strong>475</strong></td>
+        <td class="pos"><strong>582</strong></td>
+        <td class="pos"><strong>435</strong></td>
+        <td class="pos"><strong>11.9%</strong></td>
+      </tr><tr class="seg-child" data-parent="mfg" style="display:none">
+          <td class="l" style="padding-left:36px">Glazing</td>
+          <td class="drill" data-ctx="Glazing" data-kind="rev">1,867</td>
+          <td class="dim drill" data-ctx="Glazing" data-kind="cos">1,396</td>
+          <td class="pos">471</td>
+          <td>25.2%</td>
+          <td class="dim drill" data-ctx="Glazing" data-kind="oh" title="Operating overheads + Interest + Depreciation">197</td>
+          <td class="pos">274</td>
+          <td class="pos">205</td>
+          <td class="pos">11.0%</td>
+        </tr><tr class="seg-child" data-parent="mfg" style="display:none">
+          <td class="l" style="padding-left:36px">Interiors</td>
+          <td class="drill" data-ctx="Interiors" data-kind="rev">1,050</td>
+          <td class="dim drill" data-ctx="Interiors" data-kind="cos">760</td>
+          <td class="pos">290</td>
+          <td>27.6%</td>
+          <td class="dim drill" data-ctx="Interiors" data-kind="oh" title="Operating overheads + Interest + Depreciation">193</td>
+          <td class="pos">98</td>
+          <td class="pos">73</td>
+          <td class="pos">7.0%</td>
+        </tr><tr class="seg-child" data-parent="mfg" style="display:none">
+          <td class="l" style="padding-left:36px">Concrete Products</td>
+          <td class="drill" data-ctx="Concrete Products" data-kind="rev">733</td>
+          <td class="dim drill" data-ctx="Concrete Products" data-kind="cos">438</td>
+          <td class="pos">295</td>
+          <td>40.2%</td>
+          <td class="dim drill" data-ctx="Concrete Products" data-kind="oh" title="Operating overheads + Interest + Depreciation">85</td>
+          <td class="pos">210</td>
+          <td class="pos">157</td>
+          <td class="pos">21.4%</td>
+        </tr><tr class="seg-group clickrow" data-g="ret" data-open="0">
+        <td class="l"><span class="caret">▸</span> <strong>Retail</strong> <span class="dim">· 2</span></td>
+        
+        <td class="drill" data-ctx="__group:ret" data-kind="rev"><strong>540</strong></td>
+        <td class="dim drill" data-ctx="__group:ret" data-kind="cos"><strong>311</strong></td>
+        <td class="pos"><strong>229</strong></td>
+        <td><strong>42.4%</strong></td>
+        <td class="dim drill" data-ctx="__group:ret" data-kind="oh"><strong>208</strong></td>
+        <td class="pos"><strong>20</strong></td>
+        <td class="pos"><strong>15</strong></td>
+        <td class="pos"><strong>2.8%</strong></td>
+      </tr><tr class="seg-child" data-parent="ret" style="display:none">
+          <td class="l" style="padding-left:36px">metercube</td>
+          <td class="drill" data-ctx="metercube" data-kind="rev">356</td>
+          <td class="dim drill" data-ctx="metercube" data-kind="cos">174</td>
+          <td class="pos">182</td>
+          <td>51.1%</td>
+          <td class="dim drill" data-ctx="metercube" data-kind="oh" title="Operating overheads + Interest + Depreciation">169</td>
+          <td class="pos">13</td>
+          <td class="pos">9</td>
+          <td class="pos">2.5%</td>
+        </tr><tr class="seg-child" data-parent="ret" style="display:none">
+          <td class="l" style="padding-left:36px">Mattress</td>
+          <td class="drill" data-ctx="Mattress" data-kind="rev">184</td>
+          <td class="dim drill" data-ctx="Mattress" data-kind="cos">137</td>
+          <td class="pos">47</td>
+          <td>25.3%</td>
+          <td class="dim drill" data-ctx="Mattress" data-kind="oh" title="Operating overheads + Interest + Depreciation">39</td>
+          <td class="pos">7</td>
+          <td class="pos">6</td>
+          <td class="pos">3.3%</td>
+        </tr><tr class="seg-group clickrow" data-g="fin" data-open="0">
+        <td class="l"><span class="caret">▸</span> <strong>Finance Income</strong> <span class="dim">· 3</span></td>
+        
+        <td class="drill" data-ctx="__group:fin" data-kind="rev"><strong>1,060</strong></td>
+        <td class="dim drill" data-ctx="__group:fin" data-kind="cos"><strong>200</strong></td>
+        <td class="pos"><strong>860</strong></td>
+        <td><strong>81.1%</strong></td>
+        <td class="dim drill" data-ctx="__group:fin" data-kind="oh"><strong>0</strong></td>
+        <td class="pos"><strong>860</strong></td>
+        <td class="pos"><strong>644</strong></td>
+        <td class="pos"><strong>60.8%</strong></td>
+      </tr><tr class="seg-child" data-parent="fin" style="display:none">
+          <td class="l" style="padding-left:36px">Interest on FD</td>
+          <td class="drill" data-ctx="Interest on FD" data-kind="rev">860</td>
+          <td class="dim drill" data-ctx="Interest on FD" data-kind="cos">0</td>
+          <td class="pos">860</td>
+          <td>100.0%</td>
+          <td class="dim drill" data-ctx="Interest on FD" data-kind="oh" title="Operating overheads + Interest + Depreciation">0</td>
+          <td class="pos">860</td>
+          <td class="pos">644</td>
+          <td class="pos">74.9%</td>
+        </tr><tr class="seg-child" data-parent="fin" style="display:none">
+          <td class="l" style="padding-left:36px">Notional Income</td>
+          <td class="drill" data-ctx="Notional Income" data-kind="rev">200</td>
+          <td class="dim drill" data-ctx="Notional Income" data-kind="cos">200</td>
+          <td class="pos">0</td>
+          <td>0.0%</td>
+          <td class="dim drill" data-ctx="Notional Income" data-kind="oh" title="Operating overheads + Interest + Depreciation">0</td>
+          <td class="pos">0</td>
+          <td class="pos">0</td>
+          <td class="pos">0.0%</td>
+        </tr><tr class="seg-child" data-parent="fin" style="display:none">
+          <td class="l" style="padding-left:36px">Others (Finance)</td>
+          <td class="drill" data-ctx="Others (Finance)" data-kind="rev">0</td>
+          <td class="dim drill" data-ctx="Others (Finance)" data-kind="cos">0</td>
+          <td class="pos">0</td>
+          <td>0.0%</td>
+          <td class="dim drill" data-ctx="Others (Finance)" data-kind="oh" title="Operating overheads + Interest + Depreciation">0</td>
+          <td class="pos">0</td>
+          <td class="pos">0</td>
+          <td class="pos">–</td>
+        </tr></tbody>
+    </table>
+  </div>
+</div>
+</div>
+<div id="csrNote" style="max-width: var(--max); margin: 8px auto 0px; padding: 0px 48px; font-style: normal; font-variant-caps: normal; font-weight: 500; font-width: normal; font-size: 11px; line-height: 1.5; font-family: &quot;JetBrains Mono&quot;, monospace; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; letter-spacing: 0.06em; color: var(--ink-soft); text-transform: uppercase;">
+  Note · Profit after CSR: <span id="csrNoteVal" style="color:var(--ink);font-weight:700">₹4,226 Mn <span style="color:var(--ink-soft);font-weight:500">(6.2%)</span><span style="color:var(--ink-soft);font-weight:500;margin-left:14px">·</span><span style="color:var(--ink-soft);font-weight:500;margin-left:14px;letter-spacing:0.06em">CSR Expense:</span> <span style="font-weight:700">₹150 Mn</span></span>
+</div>
+
+<!-- Row 5: Project margin scatter -->
+<div class="section-h" id="sec-proj">Project-Wise Margin | Real Estate-Residential</div>
+<div class="row" style="grid-template-columns: 1fr; gap: 24px;">
+  <div class="panel flat">
+    <div class="panel-strip">
+      <div class="panel-title" style="font-size: 20px">3420 Units · 50,243 Mn Revenue · 15,466 Mn Gross Margin</div>
+      <div class="search"><input id="projSearch" placeholder="Filter project…"></div>
+    </div>
+    <div>
+      <table class="dt" id="projMargin">
+        <thead>
+          <tr>
+            <th class="l">Project</th>
+            <th class="l">WT / OC</th>
+            <th>Units</th>
+            <th>SBA</th>
+            <th>Real./sqft</th>
+            <th>Sale Value</th>
+            <th>SL Revenue</th>
+            <th>Cost</th>
+            <th>Gross Margin</th>
+            <th>GM %</th>
+          </tr>
+        </thead>
+        <tbody><tr class="total-top">
+      <td class="l">TOTAL (33 projects · 11 cities)</td>
+      <td></td>
+      <td>3,420</td>
+      <td>59,19,452</td>
+      <td class="dim">₹10,471</td>
+      <td>61,983</td>
+      <td>50,243</td>
+      <td>34,781</td>
+      <td class="pos">15,466</td>
+      <td class="pos">30.8%</td>
+    </tr><tr class="seg-group pm-city" data-city="Bangalore">
+        <td class="l"><span class="caret">▾</span> Bangalore</td>
+        <td class="l dim">19 projects</td>
+        <td>2,455</td>
+        <td>36,34,650</td>
+        <td class="dim">₹10,526</td>
+        <td>38,259</td>
+        <td>32,000</td>
+        <td>20,005</td>
+        <td class="pos">11,999</td>
+        <td class="pos">37.5%</td>
+      </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Neopolis (7 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Neopolis (7 wings)</td>
+          <td class="l dim">Feb-27 / FY28</td>
+          <td>567</td>
+          <td>8,12,927</td>
+          <td class="dim">₹13,214</td>
+          <td>10,742</td>
+          <td>10,742</td>
+          <td>4,422</td>
+          <td class="pos">6,320</td>
+          <td class="pos">58.8%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Neopolis (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 17</td>
+              <td class="l dim">Sep-26 / Nov-26</td>
+              <td>81</td>
+              <td>1,16,132</td>
+              <td class="dim">₹13,218</td>
+              <td>1,535</td>
+              <td>1,535</td>
+              <td>632</td>
+              <td class="pos">903</td>
+              <td class="pos">58.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Neopolis (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P5 Wing 7</td>
+              <td class="l dim">Dec-26 / Feb-27</td>
+              <td>81</td>
+              <td>1,16,132</td>
+              <td class="dim">₹13,218</td>
+              <td>1,535</td>
+              <td>1,535</td>
+              <td>632</td>
+              <td class="pos">903</td>
+              <td class="pos">58.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Neopolis (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 16</td>
+              <td class="l dim">Jan-27 / Mar-27</td>
+              <td>81</td>
+              <td>1,16,132</td>
+              <td class="dim">₹13,218</td>
+              <td>1,535</td>
+              <td>1,535</td>
+              <td>632</td>
+              <td class="pos">903</td>
+              <td class="pos">58.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Neopolis (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 18</td>
+              <td class="l dim">Jul-26 / Sep-26</td>
+              <td>81</td>
+              <td>1,16,132</td>
+              <td class="dim">₹13,218</td>
+              <td>1,535</td>
+              <td>1,535</td>
+              <td>632</td>
+              <td class="pos">903</td>
+              <td class="pos">58.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Neopolis (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 14</td>
+              <td class="l dim">Oct-26 / Dec-26</td>
+              <td>81</td>
+              <td>1,16,132</td>
+              <td class="dim">₹13,218</td>
+              <td>1,535</td>
+              <td>1,535</td>
+              <td>632</td>
+              <td class="pos">903</td>
+              <td class="pos">58.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Neopolis (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 19</td>
+              <td class="l dim">Feb-27 / FY28</td>
+              <td>81</td>
+              <td>1,16,132</td>
+              <td class="dim">₹13,218</td>
+              <td>1,535</td>
+              <td>1,535</td>
+              <td>632</td>
+              <td class="pos">903</td>
+              <td class="pos">58.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Neopolis (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 15</td>
+              <td class="l dim">Oct-26 / Dec-26</td>
+              <td>81</td>
+              <td>1,16,135</td>
+              <td class="dim">₹13,192</td>
+              <td>1,532</td>
+              <td>1,532</td>
+              <td>630</td>
+              <td class="pos">902</td>
+              <td class="pos">58.9%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Brooklyn Towers (3 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Brooklyn Towers (3 wings)</td>
+          <td class="l dim">Jan-27 / Mar-27</td>
+          <td>418</td>
+          <td>5,18,999</td>
+          <td class="dim">₹28,050</td>
+          <td>4,804</td>
+          <td>3,697</td>
+          <td>2,566</td>
+          <td class="pos">1,132</td>
+          <td class="pos">30.6%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Brooklyn Towers (3 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">TP P1 Wing 1</td>
+              <td class="l dim">Sep-26 / Nov-26</td>
+              <td>139</td>
+              <td>1,73,000</td>
+              <td class="dim">₹9,254</td>
+              <td>1,601</td>
+              <td>1,232</td>
+              <td>855</td>
+              <td class="pos">377</td>
+              <td class="pos">30.6%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Brooklyn Towers (3 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">TP P5 Wing 3</td>
+              <td class="l dim">May-26 / Jul-26</td>
+              <td>139</td>
+              <td>1,73,000</td>
+              <td class="dim">₹9,254</td>
+              <td>1,601</td>
+              <td>1,232</td>
+              <td>855</td>
+              <td class="pos">377</td>
+              <td class="pos">30.6%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Brooklyn Towers (3 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">TP P2 Wing 2</td>
+              <td class="l dim">Jan-27 / Mar-27</td>
+              <td>140</td>
+              <td>1,72,999</td>
+              <td class="dim">₹9,260</td>
+              <td>1,602</td>
+              <td>1,233</td>
+              <td>856</td>
+              <td class="pos">378</td>
+              <td class="pos">30.7%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Royal Crest (3 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Royal Crest (3 wings)</td>
+          <td class="l dim">Nov-26 / Jan-27</td>
+          <td>320</td>
+          <td>6,35,978</td>
+          <td class="dim">₹10,457</td>
+          <td>6,651</td>
+          <td>4,185</td>
+          <td>3,106</td>
+          <td class="pos">1,080</td>
+          <td class="pos">25.8%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Royal Crest (3 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 2</td>
+              <td class="l dim">Nov-26 / Jan-27</td>
+              <td>107</td>
+              <td>2,11,993</td>
+              <td class="dim">₹10,458</td>
+              <td>2,217</td>
+              <td>1,395</td>
+              <td>1,035</td>
+              <td class="pos">360</td>
+              <td class="pos">25.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Royal Crest (3 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 1</td>
+              <td class="l dim">Aug-26 / Oct-26</td>
+              <td>107</td>
+              <td>2,11,993</td>
+              <td class="dim">₹10,458</td>
+              <td>2,217</td>
+              <td>1,395</td>
+              <td>1,035</td>
+              <td class="pos">360</td>
+              <td class="pos">25.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Royal Crest (3 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 3</td>
+              <td class="l dim">Apr-26 / Jun-26</td>
+              <td>106</td>
+              <td>2,11,992</td>
+              <td class="dim">₹10,458</td>
+              <td>2,217</td>
+              <td>1,395</td>
+              <td>1,036</td>
+              <td class="pos">360</td>
+              <td class="pos">25.8%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Manhattan (4 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Manhattan (4 wings)</td>
+          <td class="l dim">Dec-26 / Feb-27</td>
+          <td>270</td>
+          <td>4,19,417</td>
+          <td class="dim">₹33,217</td>
+          <td>3,628</td>
+          <td>2,792</td>
+          <td>2,015</td>
+          <td class="pos">777</td>
+          <td class="pos">27.8%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Manhattan (4 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">TP P2 Wing 2</td>
+              <td class="l dim">Oct-26 / Dec-26</td>
+              <td>68</td>
+              <td>1,04,854</td>
+              <td class="dim">₹8,650</td>
+              <td>907</td>
+              <td>698</td>
+              <td>504</td>
+              <td class="pos">194</td>
+              <td class="pos">27.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Manhattan (4 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">TP P2 Wing 1</td>
+              <td class="l dim">Dec-26 / Feb-27</td>
+              <td>68</td>
+              <td>1,04,854</td>
+              <td class="dim">₹8,650</td>
+              <td>907</td>
+              <td>698</td>
+              <td>504</td>
+              <td class="pos">194</td>
+              <td class="pos">27.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Manhattan (4 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">TP P1 Wing 4</td>
+              <td class="l dim">Completed / Received</td>
+              <td>68</td>
+              <td>1,04,854</td>
+              <td class="dim">₹8,650</td>
+              <td>907</td>
+              <td>698</td>
+              <td>504</td>
+              <td class="pos">194</td>
+              <td class="pos">27.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Manhattan (4 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">TP P1 Wing 5</td>
+              <td class="l dim">Completed / Received</td>
+              <td>66</td>
+              <td>1,04,855</td>
+              <td class="dim">₹8,650</td>
+              <td>907</td>
+              <td>698</td>
+              <td>503</td>
+              <td class="pos">195</td>
+              <td class="pos">27.9%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Oakshire (2 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Oakshire (2 wings)</td>
+          <td class="l dim">Dec-26 / Feb-27</td>
+          <td>45</td>
+          <td>1,54,944</td>
+          <td class="dim">₹14,573</td>
+          <td>2,258</td>
+          <td>1,813</td>
+          <td>1,122</td>
+          <td class="pos">690</td>
+          <td class="pos">38.1%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Oakshire (2 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Phase 1 (W 1,2,7,8)</td>
+              <td class="l dim">Jun-26 / Aug-26</td>
+              <td>23</td>
+              <td>77,472</td>
+              <td class="dim">₹14,573</td>
+              <td>1,129</td>
+              <td>907</td>
+              <td>561</td>
+              <td class="pos">345</td>
+              <td class="pos">38.0%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Oakshire (2 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Phase 2 (W 3,4,9,10)</td>
+              <td class="l dim">Dec-26 / Feb-27</td>
+              <td>22</td>
+              <td>77,472</td>
+              <td class="dim">₹14,573</td>
+              <td>1,129</td>
+              <td>906</td>
+              <td>561</td>
+              <td class="pos">345</td>
+              <td class="pos">38.1%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Victoria Park (7 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Victoria Park (7 wings)</td>
+          <td class="l dim">Oct-26 / FY28</td>
+          <td>150</td>
+          <td>2,69,489</td>
+          <td class="dim">₹9,050</td>
+          <td>2,439</td>
+          <td>2,094</td>
+          <td>1,523</td>
+          <td class="pos">571</td>
+          <td class="pos">27.3%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Victoria Park (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 5</td>
+              <td class="l dim">Oct-26 / Dec-26</td>
+              <td>21</td>
+              <td>38,498</td>
+              <td class="dim">₹9,039</td>
+              <td>348</td>
+              <td>299</td>
+              <td>218</td>
+              <td class="pos">82</td>
+              <td class="pos">27.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Victoria Park (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 3</td>
+              <td class="l dim">May-26 / FY28</td>
+              <td>21</td>
+              <td>38,498</td>
+              <td class="dim">₹9,039</td>
+              <td>348</td>
+              <td>299</td>
+              <td>218</td>
+              <td class="pos">82</td>
+              <td class="pos">27.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Victoria Park (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 4</td>
+              <td class="l dim">Completed / Received</td>
+              <td>21</td>
+              <td>38,498</td>
+              <td class="dim">₹9,039</td>
+              <td>348</td>
+              <td>299</td>
+              <td>218</td>
+              <td class="pos">82</td>
+              <td class="pos">27.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Victoria Park (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 2</td>
+              <td class="l dim">Completed / Received</td>
+              <td>21</td>
+              <td>38,498</td>
+              <td class="dim">₹9,039</td>
+              <td>348</td>
+              <td>299</td>
+              <td>218</td>
+              <td class="pos">82</td>
+              <td class="pos">27.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Victoria Park (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P2 Wing 6</td>
+              <td class="l dim">Completed / Received</td>
+              <td>21</td>
+              <td>38,498</td>
+              <td class="dim">₹9,039</td>
+              <td>348</td>
+              <td>299</td>
+              <td>218</td>
+              <td class="pos">82</td>
+              <td class="pos">27.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Victoria Park (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P1 Wing 1</td>
+              <td class="l dim">Completed / Received</td>
+              <td>21</td>
+              <td>38,498</td>
+              <td class="dim">₹9,039</td>
+              <td>348</td>
+              <td>299</td>
+              <td>218</td>
+              <td class="pos">82</td>
+              <td class="pos">27.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Victoria Park (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P2 Wing 7</td>
+              <td class="l dim">Completed / Received</td>
+              <td>24</td>
+              <td>38,501</td>
+              <td class="dim">₹9,117</td>
+              <td>351</td>
+              <td>300</td>
+              <td>215</td>
+              <td class="pos">79</td>
+              <td class="pos">26.3%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Dream Acres (2 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Dream Acres (2 wings)</td>
+          <td class="l dim">Completed / May-26</td>
+          <td>209</td>
+          <td>2,09,643</td>
+          <td class="dim">₹8,342</td>
+          <td>1,749</td>
+          <td>1,749</td>
+          <td>1,320</td>
+          <td class="pos">429</td>
+          <td class="pos">24.5%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Dream Acres (2 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">TG P21 Wing 22</td>
+              <td class="l dim">Completed / May-26</td>
+              <td>105</td>
+              <td>1,04,822</td>
+              <td class="dim">₹8,347</td>
+              <td>875</td>
+              <td>875</td>
+              <td>660</td>
+              <td class="pos">215</td>
+              <td class="pos">24.6%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Dream Acres (2 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">TG P21 Wing 21</td>
+              <td class="l dim">Completed / May-26</td>
+              <td>104</td>
+              <td>1,04,821</td>
+              <td class="dim">₹8,338</td>
+              <td>874</td>
+              <td>874</td>
+              <td>660</td>
+              <td class="pos">214</td>
+              <td class="pos">24.5%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Galera (2 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Galera (2 wings)</td>
+          <td class="l dim">Completed / Received</td>
+          <td>16</td>
+          <td>53,777</td>
+          <td class="dim">₹15,153</td>
+          <td>815</td>
+          <td>815</td>
+          <td>419</td>
+          <td class="pos">396</td>
+          <td class="pos">48.5%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Galera (2 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 1</td>
+              <td class="l dim">Completed / Received</td>
+              <td>8</td>
+              <td>26,889</td>
+              <td class="dim">₹15,173</td>
+              <td>408</td>
+              <td>408</td>
+              <td>210</td>
+              <td class="pos">198</td>
+              <td class="pos">48.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Galera (2 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 2</td>
+              <td class="l dim">Completed / Received</td>
+              <td>8</td>
+              <td>26,888</td>
+              <td class="dim">₹15,137</td>
+              <td>407</td>
+              <td>407</td>
+              <td>209</td>
+              <td class="pos">198</td>
+              <td class="pos">48.6%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Dream Garden (7 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Dream Garden (7 wings)</td>
+          <td class="l dim">Aug-26 / Oct-26</td>
+          <td>298</td>
+          <td>2,75,636</td>
+          <td class="dim">₹9,607</td>
+          <td>2,648</td>
+          <td>1,826</td>
+          <td>1,526</td>
+          <td class="pos">300</td>
+          <td class="pos">16.4%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Dream Garden (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P4 W2</td>
+              <td class="l dim">Completed / Received</td>
+              <td>43</td>
+              <td>39,377</td>
+              <td class="dim">₹9,600</td>
+              <td>378</td>
+              <td>261</td>
+              <td>218</td>
+              <td class="pos">43</td>
+              <td class="pos">16.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Dream Garden (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P5 W10</td>
+              <td class="l dim">Aug-26 / Oct-26</td>
+              <td>43</td>
+              <td>39,377</td>
+              <td class="dim">₹9,600</td>
+              <td>378</td>
+              <td>261</td>
+              <td>218</td>
+              <td class="pos">43</td>
+              <td class="pos">16.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Dream Garden (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P4 W1</td>
+              <td class="l dim">Completed / Received</td>
+              <td>43</td>
+              <td>39,377</td>
+              <td class="dim">₹9,600</td>
+              <td>378</td>
+              <td>261</td>
+              <td>218</td>
+              <td class="pos">43</td>
+              <td class="pos">16.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Dream Garden (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P3 W3</td>
+              <td class="l dim">Completed / Received</td>
+              <td>43</td>
+              <td>39,377</td>
+              <td class="dim">₹9,600</td>
+              <td>378</td>
+              <td>261</td>
+              <td>218</td>
+              <td class="pos">43</td>
+              <td class="pos">16.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Dream Garden (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P3 W4</td>
+              <td class="l dim">Completed / Received</td>
+              <td>43</td>
+              <td>39,377</td>
+              <td class="dim">₹9,600</td>
+              <td>378</td>
+              <td>261</td>
+              <td>218</td>
+              <td class="pos">43</td>
+              <td class="pos">16.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Dream Garden (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P2 W6</td>
+              <td class="l dim">Completed / Received</td>
+              <td>43</td>
+              <td>39,377</td>
+              <td class="dim">₹9,600</td>
+              <td>378</td>
+              <td>261</td>
+              <td>218</td>
+              <td class="pos">43</td>
+              <td class="pos">16.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Dream Garden (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P2 W5</td>
+              <td class="l dim">Completed / Received</td>
+              <td>40</td>
+              <td>39,374</td>
+              <td class="dim">₹9,651</td>
+              <td>380</td>
+              <td>260</td>
+              <td>218</td>
+              <td class="pos">42</td>
+              <td class="pos">16.2%</td>
+            </tr><tr class="pm-proj " data-city="Bangalore" data-proj="Bangalore::Sobha Insignia W1">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Insignia W1</td>
+          <td class="l dim">Apr-26 / May-26</td>
+          <td>8</td>
+          <td>19,455</td>
+          <td class="dim">₹14,825</td>
+          <td>288</td>
+          <td>288</td>
+          <td>132</td>
+          <td class="pos">157</td>
+          <td class="pos">54.3%</td>
+        </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Sentosa (5 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Sentosa (5 wings)</td>
+          <td class="l dim">Completed / Received</td>
+          <td>43</td>
+          <td>68,630</td>
+          <td class="dim">₹9,399</td>
+          <td>645</td>
+          <td>529</td>
+          <td>425</td>
+          <td class="pos">104</td>
+          <td class="pos">19.7%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Sentosa (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P4 W1</td>
+              <td class="l dim">Completed / Received</td>
+              <td>9</td>
+              <td>13,726</td>
+              <td class="dim">₹9,398</td>
+              <td>129</td>
+              <td>106</td>
+              <td>85</td>
+              <td class="pos">21</td>
+              <td class="pos">19.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Sentosa (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P3 W3</td>
+              <td class="l dim">Completed / Received</td>
+              <td>9</td>
+              <td>13,726</td>
+              <td class="dim">₹9,398</td>
+              <td>129</td>
+              <td>106</td>
+              <td>85</td>
+              <td class="pos">21</td>
+              <td class="pos">19.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Sentosa (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P3 W4</td>
+              <td class="l dim">Completed / Received</td>
+              <td>9</td>
+              <td>13,726</td>
+              <td class="dim">₹9,398</td>
+              <td>129</td>
+              <td>106</td>
+              <td>85</td>
+              <td class="pos">21</td>
+              <td class="pos">19.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Sentosa (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P2 W6</td>
+              <td class="l dim">Completed / Received</td>
+              <td>9</td>
+              <td>13,726</td>
+              <td class="dim">₹9,398</td>
+              <td>129</td>
+              <td>106</td>
+              <td>85</td>
+              <td class="pos">21</td>
+              <td class="pos">19.8%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Sentosa (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P4 W2</td>
+              <td class="l dim">Completed / Received</td>
+              <td>7</td>
+              <td>13,726</td>
+              <td class="dim">₹9,398</td>
+              <td>129</td>
+              <td>105</td>
+              <td>85</td>
+              <td class="pos">20</td>
+              <td class="pos">19.0%</td>
+            </tr><tr class="pm-proj " data-city="Bangalore" data-proj="Bangalore::Sobha City Athena W1">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha City Athena W1</td>
+          <td class="l dim">Completed / May-26</td>
+          <td>72</td>
+          <td>1,21,606</td>
+          <td class="dim">₹8,240</td>
+          <td>1,002</td>
+          <td>1,002</td>
+          <td>960</td>
+          <td class="pos">43</td>
+          <td class="pos">4.2%</td>
+        </tr><tr class="pm-proj " data-city="Bangalore" data-proj="Bangalore::Sobha Windsor Phase 3">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Windsor Phase 3</td>
+          <td class="l dim">Completed / Received</td>
+          <td>3</td>
+          <td>5,438</td>
+          <td class="dim">₹7,993</td>
+          <td>43</td>
+          <td>43</td>
+          <td>27</td>
+          <td class="pos">17</td>
+          <td class="pos">38.9%</td>
+        </tr><tr class="pm-proj " data-city="Bangalore" data-proj="Bangalore::Sobha Valley View - Heritage 2">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Valley View - Heritage 2</td>
+          <td class="l dim">Completed / Received</td>
+          <td>1</td>
+          <td>1,543</td>
+          <td class="dim">₹11,306</td>
+          <td>17</td>
+          <td>17</td>
+          <td>8</td>
+          <td class="pos">10</td>
+          <td class="pos">54.9%</td>
+        </tr><tr class="pm-proj " data-city="Bangalore" data-proj="Bangalore::Sobha Rajvilas W1">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Rajvilas W1</td>
+          <td class="l dim">Completed / Received</td>
+          <td>3</td>
+          <td>5,977</td>
+          <td class="dim">₹10,017</td>
+          <td>60</td>
+          <td>60</td>
+          <td>53</td>
+          <td class="pos">6</td>
+          <td class="pos">10.8%</td>
+        </tr><tr class="pm-proj " data-city="Bangalore" data-proj="Bangalore::Sobha Palm Court">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Palm Court</td>
+          <td class="l dim">Completed / Received</td>
+          <td>1</td>
+          <td>1,934</td>
+          <td class="dim">₹6,484</td>
+          <td>13</td>
+          <td>10</td>
+          <td>8</td>
+          <td class="pos">2</td>
+          <td class="pos">19.0%</td>
+        </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Lake Gardens (3 twr)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Lake Gardens (3 twr)</td>
+          <td class="l dim">Completed / Received</td>
+          <td>3</td>
+          <td>4,184</td>
+          <td class="dim">₹6,401</td>
+          <td>27</td>
+          <td>19</td>
+          <td>19</td>
+          <td class="pos">0</td>
+          <td class="neg">-2.0%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Lake Gardens (3 twr)" style="display:none">
+              <td class="l" style="padding-left:48px">P2 Tower 1B</td>
+              <td class="l dim">Completed / Received</td>
+              <td>1</td>
+              <td>1,395</td>
+              <td class="dim">₹6,452</td>
+              <td>9</td>
+              <td>6</td>
+              <td>6</td>
+              <td class="pos">0</td>
+              <td class="pos">0.0%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Lake Gardens (3 twr)" style="display:none">
+              <td class="l" style="padding-left:48px">P2 Tower 02</td>
+              <td class="l dim">Completed / Received</td>
+              <td>1</td>
+              <td>1,395</td>
+              <td class="dim">₹6,452</td>
+              <td>9</td>
+              <td>6</td>
+              <td>6</td>
+              <td class="pos">0</td>
+              <td class="pos">0.0%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Lake Gardens (3 twr)" style="display:none">
+              <td class="l" style="padding-left:48px">P2 Tower 04</td>
+              <td class="l dim">Completed / Received</td>
+              <td>1</td>
+              <td>1,394</td>
+              <td class="dim">₹6,456</td>
+              <td>9</td>
+              <td>7</td>
+              <td>7</td>
+              <td class="pos">0</td>
+              <td class="pos">0.0%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Bangalore" data-proj="Bangalore::Sobha Royal Pavilion (4 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Royal Pavilion (4 wings)</td>
+          <td class="l dim">Completed / Received</td>
+          <td>27</td>
+          <td>47,570</td>
+          <td class="dim">₹7,846</td>
+          <td>373</td>
+          <td>262</td>
+          <td>278</td>
+          <td class="neg">-16</td>
+          <td class="neg">-6.1%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Royal Pavilion (4 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P7 W14</td>
+              <td class="l dim">Completed / Received</td>
+              <td>7</td>
+              <td>11,893</td>
+              <td class="dim">₹7,820</td>
+              <td>93</td>
+              <td>66</td>
+              <td>70</td>
+              <td class="neg">-4</td>
+              <td class="neg">-6.1%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Royal Pavilion (4 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P8 W15</td>
+              <td class="l dim">Completed / Received</td>
+              <td>7</td>
+              <td>11,893</td>
+              <td class="dim">₹7,820</td>
+              <td>93</td>
+              <td>66</td>
+              <td>70</td>
+              <td class="neg">-4</td>
+              <td class="neg">-6.1%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Royal Pavilion (4 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P7 W13</td>
+              <td class="l dim">Completed / Received</td>
+              <td>7</td>
+              <td>11,893</td>
+              <td class="dim">₹7,820</td>
+              <td>93</td>
+              <td>66</td>
+              <td>70</td>
+              <td class="neg">-4</td>
+              <td class="neg">-6.1%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Bangalore::Sobha Royal Pavilion (4 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">P6 W10</td>
+              <td class="l dim">Completed / Received</td>
+              <td>6</td>
+              <td>11,891</td>
+              <td class="dim">₹7,905</td>
+              <td>94</td>
+              <td>64</td>
+              <td>68</td>
+              <td class="neg">-4</td>
+              <td class="neg">-6.3%</td>
+            </tr><tr class="pm-proj " data-city="Bangalore" data-proj="Bangalore::Sobha Lifestyle Phase 2">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Lifestyle Phase 2</td>
+          <td class="l dim">Completed / Received</td>
+          <td>1</td>
+          <td>7,503</td>
+          <td class="dim">₹7,583</td>
+          <td>57</td>
+          <td>57</td>
+          <td>76</td>
+          <td class="neg">-19</td>
+          <td class="neg">-33.3%</td>
+        </tr><tr class="seg-group pm-city" data-city="Gurgaon">
+        <td class="l"><span class="caret">▾</span> Gurgaon</td>
+        <td class="l dim">2 projects</td>
+        <td>241</td>
+        <td>6,17,084</td>
+        <td class="dim">₹14,628</td>
+        <td>9,027</td>
+        <td>5,683</td>
+        <td>4,599</td>
+        <td class="pos">1,083</td>
+        <td class="pos">19.1%</td>
+      </tr><tr class="pm-proj clickrow" data-city="Gurgaon" data-proj="Gurgaon::Sobha City Gurgaon Ph-6 (5 twrs)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha City Gurgaon Ph-6 (5 twrs)</td>
+          <td class="l dim">FY28 / FY28</td>
+          <td>231</td>
+          <td>5,75,002</td>
+          <td class="dim">₹14,941</td>
+          <td>8,591</td>
+          <td>5,247</td>
+          <td>4,319</td>
+          <td class="pos">927</td>
+          <td class="pos">17.7%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Gurgaon::Sobha City Gurgaon Ph-6 (5 twrs)" style="display:none">
+              <td class="l" style="padding-left:48px">Ph-6 Tower D1</td>
+              <td class="l dim">FY28 / May-26</td>
+              <td>46</td>
+              <td>1,15,000</td>
+              <td class="dim">₹14,939</td>
+              <td>1,718</td>
+              <td>1,049</td>
+              <td>864</td>
+              <td class="pos">185</td>
+              <td class="pos">17.6%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Gurgaon::Sobha City Gurgaon Ph-6 (5 twrs)" style="display:none">
+              <td class="l" style="padding-left:48px">Ph-6 Tower D2</td>
+              <td class="l dim">Aug-26 / Sep-26</td>
+              <td>46</td>
+              <td>1,15,000</td>
+              <td class="dim">₹14,939</td>
+              <td>1,718</td>
+              <td>1,049</td>
+              <td>864</td>
+              <td class="pos">185</td>
+              <td class="pos">17.6%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Gurgaon::Sobha City Gurgaon Ph-6 (5 twrs)" style="display:none">
+              <td class="l" style="padding-left:48px">Ph-6 Tower Z2</td>
+              <td class="l dim">Jan-27 / Feb-27</td>
+              <td>46</td>
+              <td>1,15,000</td>
+              <td class="dim">₹14,939</td>
+              <td>1,718</td>
+              <td>1,049</td>
+              <td>864</td>
+              <td class="pos">185</td>
+              <td class="pos">17.6%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Gurgaon::Sobha City Gurgaon Ph-6 (5 twrs)" style="display:none">
+              <td class="l" style="padding-left:48px">Ph-6 Tower Z1</td>
+              <td class="l dim">Oct-26 / Nov-26</td>
+              <td>46</td>
+              <td>1,15,000</td>
+              <td class="dim">₹14,939</td>
+              <td>1,718</td>
+              <td>1,049</td>
+              <td>864</td>
+              <td class="pos">185</td>
+              <td class="pos">17.6%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Gurgaon::Sobha City Gurgaon Ph-6 (5 twrs)" style="display:none">
+              <td class="l" style="padding-left:48px">Ph-6 Tower D4</td>
+              <td class="l dim">FY28 / FY28</td>
+              <td>47</td>
+              <td>1,15,002</td>
+              <td class="dim">₹14,948</td>
+              <td>1,719</td>
+              <td>1,051</td>
+              <td>863</td>
+              <td class="pos">187</td>
+              <td class="pos">17.8%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Gurgaon" data-proj="Gurgaon::International City (3 vil)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> International City (3 vil)</td>
+          <td class="l dim">Completed / Received</td>
+          <td>10</td>
+          <td>42,082</td>
+          <td class="dim">₹10,361</td>
+          <td>436</td>
+          <td>436</td>
+          <td>280</td>
+          <td class="pos">156</td>
+          <td class="pos">35.9%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Gurgaon::International City (3 vil)" style="display:none">
+              <td class="l" style="padding-left:48px">IC – E</td>
+              <td class="l dim">Completed / Received</td>
+              <td>3</td>
+              <td>14,027</td>
+              <td class="dim">₹10,337</td>
+              <td>145</td>
+              <td>145</td>
+              <td>93</td>
+              <td class="pos">52</td>
+              <td class="pos">35.9%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Gurgaon::International City (3 vil)" style="display:none">
+              <td class="l" style="padding-left:48px">IC – B</td>
+              <td class="l dim">Completed / Received</td>
+              <td>3</td>
+              <td>14,027</td>
+              <td class="dim">₹10,337</td>
+              <td>145</td>
+              <td>145</td>
+              <td>93</td>
+              <td class="pos">52</td>
+              <td class="pos">35.9%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Gurgaon::International City (3 vil)" style="display:none">
+              <td class="l" style="padding-left:48px">IC E-Villa</td>
+              <td class="l dim">Completed / Received</td>
+              <td>4</td>
+              <td>14,028</td>
+              <td class="dim">₹10,408</td>
+              <td>146</td>
+              <td>146</td>
+              <td>94</td>
+              <td class="pos">52</td>
+              <td class="pos">35.6%</td>
+            </tr><tr class="seg-group pm-city" data-city="Cochin">
+        <td class="l"><span class="caret">▾</span> Cochin</td>
+        <td class="l dim">2 projects</td>
+        <td>253</td>
+        <td>6,39,591</td>
+        <td class="dim">₹8,585</td>
+        <td>5,491</td>
+        <td>3,815</td>
+        <td>3,773</td>
+        <td class="pos">43</td>
+        <td class="pos">1.1%</td>
+      </tr><tr class="pm-proj clickrow" data-city="Cochin" data-proj="Cochin::Sobha Atlantis (2 blocks)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Atlantis (2 blocks)</td>
+          <td class="l dim">Aug-26 / Nov-26</td>
+          <td>148</td>
+          <td>3,42,847</td>
+          <td class="dim">₹7,949</td>
+          <td>2,725</td>
+          <td>2,404</td>
+          <td>2,343</td>
+          <td class="pos">62</td>
+          <td class="pos">2.6%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Cochin::Sobha Atlantis (2 blocks)" style="display:none">
+              <td class="l" style="padding-left:48px">Phase 1 Block 4</td>
+              <td class="l dim">Jun-26 / Sep-26</td>
+              <td>74</td>
+              <td>1,71,424</td>
+              <td class="dim">₹7,951</td>
+              <td>1,363</td>
+              <td>1,202</td>
+              <td>1,172</td>
+              <td class="pos">31</td>
+              <td class="pos">2.6%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Cochin::Sobha Atlantis (2 blocks)" style="display:none">
+              <td class="l" style="padding-left:48px">Phase 1 Block 3</td>
+              <td class="l dim">Aug-26 / Nov-26</td>
+              <td>74</td>
+              <td>1,71,423</td>
+              <td class="dim">₹7,945</td>
+              <td>1,362</td>
+              <td>1,202</td>
+              <td>1,171</td>
+              <td class="pos">31</td>
+              <td class="pos">2.6%</td>
+            </tr><tr class="pm-proj clickrow" data-city="Cochin" data-proj="Cochin::Marina One (5 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Marina One (5 wings)</td>
+          <td class="l dim">Jul-26 / Sep-26</td>
+          <td>105</td>
+          <td>2,96,744</td>
+          <td class="dim">₹9,322</td>
+          <td>2,766</td>
+          <td>1,411</td>
+          <td>1,430</td>
+          <td class="neg">-19</td>
+          <td class="neg">-1.4%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Cochin::Marina One (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">East Wing 5</td>
+              <td class="l dim">Jul-26 / Sep-26</td>
+              <td>21</td>
+              <td>59,349</td>
+              <td class="dim">₹9,318</td>
+              <td>553</td>
+              <td>282</td>
+              <td>286</td>
+              <td class="neg">-4</td>
+              <td class="neg">-1.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Cochin::Marina One (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">North Wing 2</td>
+              <td class="l dim">Completed / Received</td>
+              <td>21</td>
+              <td>59,349</td>
+              <td class="dim">₹9,318</td>
+              <td>553</td>
+              <td>282</td>
+              <td>286</td>
+              <td class="neg">-4</td>
+              <td class="neg">-1.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Cochin::Marina One (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">North Wing 3</td>
+              <td class="l dim">Completed / Received</td>
+              <td>21</td>
+              <td>59,349</td>
+              <td class="dim">₹9,318</td>
+              <td>553</td>
+              <td>282</td>
+              <td>286</td>
+              <td class="neg">-4</td>
+              <td class="neg">-1.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Cochin::Marina One (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">South Wing 12</td>
+              <td class="l dim">Completed / Received</td>
+              <td>21</td>
+              <td>59,349</td>
+              <td class="dim">₹9,318</td>
+              <td>553</td>
+              <td>282</td>
+              <td>286</td>
+              <td class="neg">-4</td>
+              <td class="neg">-1.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Cochin::Marina One (5 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">East Wing 4</td>
+              <td class="l dim">Completed / Received</td>
+              <td>21</td>
+              <td>59,348</td>
+              <td class="dim">₹9,335</td>
+              <td>554</td>
+              <td>283</td>
+              <td>286</td>
+              <td class="neg">-3</td>
+              <td class="neg">-1.1%</td>
+            </tr><tr class="seg-group pm-city" data-city="Thrissur">
+        <td class="l"><span class="caret">▾</span> Thrissur</td>
+        <td class="l dim">2 projects</td>
+        <td>165</td>
+        <td>4,03,515</td>
+        <td class="dim">₹7,219</td>
+        <td>2,913</td>
+        <td>2,913</td>
+        <td>2,229</td>
+        <td class="pos">684</td>
+        <td class="pos">23.5%</td>
+      </tr><tr class="pm-proj clickrow" data-city="Thrissur" data-proj="Thrissur::Sobha Metropolis (3 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▾</span> Sobha Metropolis (3 wings)</td>
+          <td class="l dim">Dec-26 / Jan-27</td>
+          <td>129</td>
+          <td>2,83,921</td>
+          <td class="dim">₹7,044</td>
+          <td>2,000</td>
+          <td>2,000</td>
+          <td>1,454</td>
+          <td class="pos">546</td>
+          <td class="pos">27.3%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Thrissur::Sobha Metropolis (3 wings)">
+              <td class="l" style="padding-left:48px">Phase I Wing 2</td>
+              <td class="l dim">Aug-26 / Sep-26</td>
+              <td>43</td>
+              <td>94,640</td>
+              <td class="dim">₹7,048</td>
+              <td>667</td>
+              <td>667</td>
+              <td>485</td>
+              <td class="pos">182</td>
+              <td class="pos">27.3%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Thrissur::Sobha Metropolis (3 wings)">
+              <td class="l" style="padding-left:48px">Phase I Wing 3</td>
+              <td class="l dim">Oct-26 / Dec-26</td>
+              <td>43</td>
+              <td>94,640</td>
+              <td class="dim">₹7,048</td>
+              <td>667</td>
+              <td>667</td>
+              <td>485</td>
+              <td class="pos">182</td>
+              <td class="pos">27.3%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Thrissur::Sobha Metropolis (3 wings)">
+              <td class="l" style="padding-left:48px">Phase I Wing 1</td>
+              <td class="l dim">Dec-26 / Jan-27</td>
+              <td>43</td>
+              <td>94,641</td>
+              <td class="dim">₹7,037</td>
+              <td>666</td>
+              <td>666</td>
+              <td>484</td>
+              <td class="pos">182</td>
+              <td class="pos">27.3%</td>
+            </tr><tr class="pm-proj " data-city="Thrissur" data-proj="Thrissur::Sobha Lake Edge">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Lake Edge</td>
+          <td class="l dim">Completed / Received</td>
+          <td>36</td>
+          <td>1,19,594</td>
+          <td class="dim">₹7,637</td>
+          <td>913</td>
+          <td>913</td>
+          <td>775</td>
+          <td class="pos">138</td>
+          <td class="pos">15.2%</td>
+        </tr><tr class="seg-group pm-city" data-city="Hyderabad">
+        <td class="l"><span class="caret">▾</span> Hyderabad</td>
+        <td class="l dim">1 project</td>
+        <td>51</td>
+        <td>1,30,410</td>
+        <td class="dim">₹14,623</td>
+        <td>1,907</td>
+        <td>1,907</td>
+        <td>1,132</td>
+        <td class="pos">775</td>
+        <td class="pos">40.6%</td>
+      </tr><tr class="pm-proj clickrow" data-city="Hyderabad" data-proj="Hyderabad::Sobha Waterfront (2 twrs)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Waterfront (2 twrs)</td>
+          <td class="l dim">Jan-27 / Feb-27</td>
+          <td>51</td>
+          <td>1,30,410</td>
+          <td class="dim">₹14,625</td>
+          <td>1,907</td>
+          <td>1,907</td>
+          <td>1,132</td>
+          <td class="pos">775</td>
+          <td class="pos">40.6%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Hyderabad::Sobha Waterfront (2 twrs)" style="display:none">
+              <td class="l" style="padding-left:48px">Tower 4</td>
+              <td class="l dim">Jan-27 / Feb-27</td>
+              <td>26</td>
+              <td>65,205</td>
+              <td class="dim">₹14,631</td>
+              <td>954</td>
+              <td>954</td>
+              <td>566</td>
+              <td class="pos">388</td>
+              <td class="pos">40.7%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Hyderabad::Sobha Waterfront (2 twrs)" style="display:none">
+              <td class="l" style="padding-left:48px">Tower 3</td>
+              <td class="l dim">Oct-26 / Feb-27</td>
+              <td>25</td>
+              <td>65,205</td>
+              <td class="dim">₹14,615</td>
+              <td>953</td>
+              <td>953</td>
+              <td>566</td>
+              <td class="pos">387</td>
+              <td class="pos">40.6%</td>
+            </tr><tr class="seg-group pm-city" data-city="Chennai">
+        <td class="l"><span class="caret">▾</span> Chennai</td>
+        <td class="l dim">2 projects</td>
+        <td>142</td>
+        <td>2,48,337</td>
+        <td class="dim">₹8,251</td>
+        <td>2,049</td>
+        <td>1,622</td>
+        <td>1,228</td>
+        <td class="pos">393</td>
+        <td class="pos">24.2%</td>
+      </tr><tr class="pm-proj clickrow" data-city="Chennai" data-proj="Chennai::Sobha Arbor (7 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Arbor (7 wings)</td>
+          <td class="l dim">May-26 / May-26</td>
+          <td>130</td>
+          <td>2,23,687</td>
+          <td class="dim">₹8,388</td>
+          <td>1,876</td>
+          <td>1,552</td>
+          <td>1,202</td>
+          <td class="pos">349</td>
+          <td class="pos">22.5%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Chennai::Sobha Arbor (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 1</td>
+              <td class="l dim">Completed / Apr-26</td>
+              <td>19</td>
+              <td>31,955</td>
+              <td class="dim">₹8,387</td>
+              <td>268</td>
+              <td>222</td>
+              <td>172</td>
+              <td class="pos">50</td>
+              <td class="pos">22.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Chennai::Sobha Arbor (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 2</td>
+              <td class="l dim">Completed / Apr-26</td>
+              <td>19</td>
+              <td>31,955</td>
+              <td class="dim">₹8,387</td>
+              <td>268</td>
+              <td>222</td>
+              <td>172</td>
+              <td class="pos">50</td>
+              <td class="pos">22.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Chennai::Sobha Arbor (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 3</td>
+              <td class="l dim">Completed / Apr-26</td>
+              <td>19</td>
+              <td>31,955</td>
+              <td class="dim">₹8,387</td>
+              <td>268</td>
+              <td>222</td>
+              <td>172</td>
+              <td class="pos">50</td>
+              <td class="pos">22.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Chennai::Sobha Arbor (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 4</td>
+              <td class="l dim">Completed / May-26</td>
+              <td>19</td>
+              <td>31,955</td>
+              <td class="dim">₹8,387</td>
+              <td>268</td>
+              <td>222</td>
+              <td>172</td>
+              <td class="pos">50</td>
+              <td class="pos">22.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Chennai::Sobha Arbor (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 5</td>
+              <td class="l dim">Completed / May-26</td>
+              <td>19</td>
+              <td>31,955</td>
+              <td class="dim">₹8,387</td>
+              <td>268</td>
+              <td>222</td>
+              <td>172</td>
+              <td class="pos">50</td>
+              <td class="pos">22.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Chennai::Sobha Arbor (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 6</td>
+              <td class="l dim">May-26 / May-26</td>
+              <td>19</td>
+              <td>31,955</td>
+              <td class="dim">₹8,387</td>
+              <td>268</td>
+              <td>222</td>
+              <td>172</td>
+              <td class="pos">50</td>
+              <td class="pos">22.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Chennai::Sobha Arbor (7 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Wing 7</td>
+              <td class="l dim">Completed / Received</td>
+              <td>16</td>
+              <td>31,957</td>
+              <td class="dim">₹8,386</td>
+              <td>268</td>
+              <td>220</td>
+              <td>170</td>
+              <td class="pos">49</td>
+              <td class="pos">22.3%</td>
+            </tr><tr class="pm-proj " data-city="Chennai" data-proj="Chennai::Sobha Conserve">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Conserve</td>
+          <td class="l dim">Completed / Received</td>
+          <td>12</td>
+          <td>24,650</td>
+          <td class="dim">₹7,005</td>
+          <td>173</td>
+          <td>70</td>
+          <td>26</td>
+          <td class="pos">44</td>
+          <td class="pos">62.9%</td>
+        </tr><tr class="seg-group pm-city" data-city="Trivandrum">
+        <td class="l"><span class="caret">▾</span> Trivandrum</td>
+        <td class="l dim">1 project</td>
+        <td>72</td>
+        <td>1,44,198</td>
+        <td class="dim">₹8,974</td>
+        <td>1,294</td>
+        <td>1,294</td>
+        <td>952</td>
+        <td class="pos">343</td>
+        <td class="pos">26.5%</td>
+      </tr><tr class="pm-proj clickrow" data-city="Trivandrum" data-proj="Trivandrum::Sobha Mdws Whispering Hill (3 wings)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Mdws Whispering Hill (3 wings)</td>
+          <td class="l dim">FY28 / FY28</td>
+          <td>72</td>
+          <td>1,44,198</td>
+          <td class="dim">₹8,976</td>
+          <td>1,294</td>
+          <td>1,294</td>
+          <td>952</td>
+          <td class="pos">343</td>
+          <td class="pos">26.5%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Trivandrum::Sobha Mdws Whispering Hill (3 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Meadows Wing 1</td>
+              <td class="l dim">Apr-26 / May-26</td>
+              <td>24</td>
+              <td>48,066</td>
+              <td class="dim">₹8,967</td>
+              <td>431</td>
+              <td>431</td>
+              <td>317</td>
+              <td class="pos">114</td>
+              <td class="pos">26.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Trivandrum::Sobha Mdws Whispering Hill (3 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Meadows Wing 2</td>
+              <td class="l dim">Completed / May-26</td>
+              <td>24</td>
+              <td>48,066</td>
+              <td class="dim">₹8,967</td>
+              <td>431</td>
+              <td>431</td>
+              <td>317</td>
+              <td class="pos">114</td>
+              <td class="pos">26.5%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Trivandrum::Sobha Mdws Whispering Hill (3 wings)" style="display:none">
+              <td class="l" style="padding-left:48px">Ridge Tower 1</td>
+              <td class="l dim">FY28 / FY28</td>
+              <td>24</td>
+              <td>48,066</td>
+              <td class="dim">₹8,988</td>
+              <td>432</td>
+              <td>432</td>
+              <td>318</td>
+              <td class="pos">115</td>
+              <td class="pos">26.6%</td>
+            </tr><tr class="seg-group pm-city" data-city="Pune">
+        <td class="l"><span class="caret">▾</span> Pune</td>
+        <td class="l dim">1 project</td>
+        <td>33</td>
+        <td>78,006</td>
+        <td class="dim">₹11,166</td>
+        <td>871</td>
+        <td>871</td>
+        <td>694</td>
+        <td class="pos">177</td>
+        <td class="pos">20.3%</td>
+      </tr><tr class="pm-proj clickrow" data-city="Pune" data-proj="Pune::Sobha Nesara (2 blocks)">
+          <td class="l" style="padding-left:24px"><span class="caret">▸</span> Sobha Nesara (2 blocks)</td>
+          <td class="l dim">Jan-27 / Feb-27</td>
+          <td>33</td>
+          <td>78,006</td>
+          <td class="dim">₹11,164</td>
+          <td>871</td>
+          <td>871</td>
+          <td>694</td>
+          <td class="pos">177</td>
+          <td class="pos">20.4%</td>
+        </tr><tr class="seg-child pm-wing" data-proj="Pune::Sobha Nesara (2 blocks)" style="display:none">
+              <td class="l" style="padding-left:48px">Block 3</td>
+              <td class="l dim">Jan-27 / Feb-27</td>
+              <td>17</td>
+              <td>39,003</td>
+              <td class="dim">₹11,179</td>
+              <td>436</td>
+              <td>436</td>
+              <td>347</td>
+              <td class="pos">89</td>
+              <td class="pos">20.4%</td>
+            </tr><tr class="seg-child pm-wing" data-proj="Pune::Sobha Nesara (2 blocks)" style="display:none">
+              <td class="l" style="padding-left:48px">Block 1</td>
+              <td class="l dim">Completed / Received</td>
+              <td>16</td>
+              <td>39,003</td>
+              <td class="dim">₹11,153</td>
+              <td>435</td>
+              <td>435</td>
+              <td>347</td>
+              <td class="pos">88</td>
+              <td class="pos">20.2%</td>
+            </tr><tr class="seg-group pm-city" data-city="Calicut">
+        <td class="l"><span class="caret">▾</span> Calicut</td>
+        <td class="l dim">1 project</td>
+        <td>4</td>
+        <td>18,156</td>
+        <td class="dim">₹7,601</td>
+        <td>138</td>
+        <td>104</td>
+        <td>138</td>
+        <td class="neg">-34</td>
+        <td class="neg">-32.7%</td>
+      </tr><tr class="pm-proj " data-city="Calicut" data-proj="Calicut::Sobha Bela Encosta">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Bela Encosta</td>
+          <td class="l dim">Completed / Sep-26</td>
+          <td>4</td>
+          <td>18,156</td>
+          <td class="dim">₹7,587</td>
+          <td>138</td>
+          <td>104</td>
+          <td>138</td>
+          <td class="neg">-34</td>
+          <td class="neg">-32.2%</td>
+        </tr><tr class="seg-group pm-city" data-city="GIFT">
+        <td class="l"><span class="caret">▾</span> GIFT</td>
+        <td class="l dim">1 project</td>
+        <td>3</td>
+        <td>3,309</td>
+        <td class="dim">₹6,044</td>
+        <td>20</td>
+        <td>20</td>
+        <td>19</td>
+        <td class="pos">1</td>
+        <td class="pos">5.0%</td>
+      </tr><tr class="pm-proj " data-city="GIFT" data-proj="GIFT::Sobha Dream Heights T2">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Dream Heights T2</td>
+          <td class="l dim">Completed / Received</td>
+          <td>3</td>
+          <td>3,309</td>
+          <td class="dim">₹6,073</td>
+          <td>20</td>
+          <td>20</td>
+          <td>19</td>
+          <td class="pos">1</td>
+          <td class="pos">5.5%</td>
+        </tr><tr class="seg-group pm-city" data-city="Coimbatore">
+        <td class="l"><span class="caret">▾</span> Coimbatore</td>
+        <td class="l dim">1 project</td>
+        <td>1</td>
+        <td>2,196</td>
+        <td class="dim">₹6,375</td>
+        <td>14</td>
+        <td>14</td>
+        <td>12</td>
+        <td class="pos">2</td>
+        <td class="pos">14.3%</td>
+      </tr><tr class="pm-proj " data-city="Coimbatore" data-proj="Coimbatore::Sobha Verdure">
+          <td class="l" style="padding-left:24px"><span class="caret dim">·</span> Sobha Verdure</td>
+          <td class="l dim">Completed / Received</td>
+          <td>1</td>
+          <td>2,196</td>
+          <td class="dim">₹6,243</td>
+          <td>14</td>
+          <td>14</td>
+          <td>12</td>
+          <td class="pos">2</td>
+          <td class="pos">12.1%</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <span>INTERNAL AND CONFIDENTIAL</span>
+</div>
+
+<div class="tt" id="tooltip"></div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function(){
+  const btn = document.getElementById('backToTop');
+  let timer = null;
+  let lastY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < 100) { btn.classList.remove('show'); return; }
+    if (window.scrollY === lastY) return;
+    lastY = window.scrollY;
+    btn.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(() => btn.classList.remove('show'), 3000);
+  });
+  btn.addEventListener('mouseenter', () => clearTimeout(timer));
+  btn.addEventListener('mouseleave', () => { timer = setTimeout(() => btn.classList.remove('show'), 1500); });
+})();
+</script>
+
+<!-- Drill-down drawer -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div>
+      <div class="crumb" id="drawerCrumb">Overheads · Drill-down</div>
+      <h3 id="drawerTitle">1 Sobha</h3>
+    </div>
+    <button class="drawer-close" id="drawerClose" aria-label="Close">×</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"><div style="margin-bottom:24px">
+      <div style="font-family:var(--mono); font-size:9px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-soft); margin-bottom:6px;">Overheads · FY27E</div>
+      <div style="font-family:var(--serif); font-size:44px; font-weight:300; color:var(--accent); line-height:1; letter-spacing:-0.01em;">₹81<span style="font-size:14px; color:var(--ink-soft); margin-left:8px;">Mn</span></div>
+      <div style="font-family:var(--mono); font-size:11px; color:var(--ink-soft); margin-top:8px;">15.4% of segment revenue</div>
+    </div><h4>Overheads — Component Split</h4><ul class="proj-list" style="list-style:none; padding:0; margin:0;"><li style="display:block; padding:10px 0; border-bottom:1px dashed var(--line);">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+            <span class="nm">Depreciation</span>
+            <span class="vl">₹60 Mn <span style="color:var(--ink-soft); font-size:10px; margin-left:6px;">74.1%</span></span>
+          </div>
+          <div style="height:4px; background:var(--accent-soft); border-radius:1px; overflow:hidden;"><div style="width:100%; height:100%; background:var(--accent);"></div></div>
+        </li><li style="display:block; padding:10px 0; border-bottom:1px dashed var(--line);">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+            <span class="nm">Interest</span>
+            <span class="vl">₹15 Mn <span style="color:var(--ink-soft); font-size:10px; margin-left:6px;">18.5%</span></span>
+          </div>
+          <div style="height:4px; background:var(--accent-soft); border-radius:1px; overflow:hidden;"><div style="width:25%; height:100%; background:var(--accent);"></div></div>
+        </li><li style="display:block; padding:10px 0; border-bottom:1px dashed var(--line);">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+            <span class="nm">Employee Cost</span>
+            <span class="vl">₹3 Mn <span style="color:var(--ink-soft); font-size:10px; margin-left:6px;">3.7%</span></span>
+          </div>
+          <div style="height:4px; background:var(--accent-soft); border-radius:1px; overflow:hidden;"><div style="width:5%; height:100%; background:var(--accent);"></div></div>
+        </li><li style="display:block; padding:10px 0; border-bottom:1px dashed var(--line);">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+            <span class="nm">IT Expenses</span>
+            <span class="vl">₹2 Mn <span style="color:var(--ink-soft); font-size:10px; margin-left:6px;">2.5%</span></span>
+          </div>
+          <div style="height:4px; background:var(--accent-soft); border-radius:1px; overflow:hidden;"><div style="width:3.3333333333333335%; height:100%; background:var(--accent);"></div></div>
+        </li><li style="display:block; padding:10px 0; border-bottom:1px dashed var(--line);">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+            <span class="nm">Admin Expenses</span>
+            <span class="vl">₹1 Mn <span style="color:var(--ink-soft); font-size:10px; margin-left:6px;">1.2%</span></span>
+          </div>
+          <div style="height:4px; background:var(--accent-soft); border-radius:1px; overflow:hidden;"><div style="width:1.6666666666666667%; height:100%; background:var(--accent);"></div></div>
+        </li></ul></div>
+</aside>
+
+<script src="data.js"></script>
+<script src="pnl.js"></script>
+
+
+
+<script src="../../site.js"></script>
+</body></html>

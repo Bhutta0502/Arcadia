@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="../../auth.js"></script>
+<meta charset="utf-8">
+<title>Group MIS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="../../home.html" class="brand">
+    <img class="brand-mark" src="assets/sobha-logo.png" alt="SOBHA">
+    <span class="brand-divider"></span>
+    <span class="brand-meta">
+      <span class="brand-meta-label">FY 2026-27</span>
+      <span class="brand-meta-title">Operational Plan · <em>Walkthrough</em></span>
+    </span>
+  </a>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="sales.html">Sales</a>
+    <a href="walkthrough.html" class="active">Walkthrough</a>
+    <a href="cashflow.html">Cash Flow</a>
+    <a href="pnl.html">P&amp;L</a>
+    <a href="overheads.html">Overheads</a>
+  </nav>
+</header>
+
+<div class="page-head">
+  <div>
+    <div class="crumb">DELIVERY</div>
+    <h1>Walkthroughs &amp; OC</h1>
+  </div>
+</div>
+
+<!-- KPI strip -->
+<section class="kpi-strip" style="grid-template-columns: repeat(5, 1fr);">
+  <div class="kpi"><span class="accent-bar"></span>
+    <div class="label">WALKTHROUGH PLAN</div>
+    <div class="val lg">38</div>
+    <div class="delta up"><span class="vs">wings across 18 projects and 8 cities</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">UNITS PLANNED FOR WALKTHROUGH</div>
+    <div class="val lg">3,518</div>
+    <div class="delta up">▲ 10.4% <span class="vs">vs 3,188 FY26A</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">SBA PLANNED FOR WALKTHROUGH</div>
+    <div class="val lg">6.50<span class="unit">  Mn sft</span></div>
+    <div class="delta up">▲ 20.3% <span class="vs">vs 5.40 Mn FY26A</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">OC PLAN
+
+</div>
+    <div class="val lg">45</div>
+    <div class="delta up"><span class="vs">wings across 20 projects and 9 cities</span></div>
+  </div>
+  <div class="kpi">
+    <div class="label">UNITS PLANNED FOR OC</div>
+    <div class="val lg">3,637<span class="unit" style="font-size: 11px"> 
+6.64 Mn sft</span></div>
+  </div>
+</section>
+
+<!-- Quick nav -->
+<nav class="quicknav">
+  <a href="#sec-region" class="qn"><span class="qn-num">01</span><span class="qn-label">Region wise Walkthrough Plan</span></a>
+  <a href="#sec-wt-cal" class="qn"><span class="qn-num">02</span><span class="qn-label">Walkthrough Calendar</span></a>
+  <a href="#sec-wt-plan" class="qn"><span class="qn-num">03</span><span class="qn-label">Project wise Walkthrough Plan</span></a>
+  <a href="#sec-oc-cal" class="qn"><span class="qn-num">04</span><span class="qn-label">OC Calendar</span></a>
+  <a href="#sec-oc-plan" class="qn"><span class="qn-num">05</span><span class="qn-label">Project wise OC Plan</span></a>
+</nav>
+
+<!-- Row 3: City summary table -->
+<div class="section-h" id="sec-region">Region wise Walkthrough Plan</div>
+<div class="panel flat">
+  <table class="dt" id="cityTable">
+    <thead>
+      <tr>
+        <th class="l">Region</th>
+        <th>FY27E Units</th>
+        <th>FY27E SBA (sft)</th>
+        <th>FY26A Units</th>
+        <th>FY26A SBA (sft)</th>
+        <th>Δ Units</th>
+        <th>Growth (SBA)</th>
+        <th class="l">Trend</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- Row 5: Project family walkthrough matrix -->
+<div class="section-h" id="sec-wt-cal">Walkthrough Calendar</div>
+<div class="panel flat">
+  <div style="padding: 14px 16px; display:flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--rule);">
+    <div>
+      <div class="panel-title">38 Wings · 18 Projects · 8 Cities</div>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <div class="qchips" data-target="fam">
+        <button class="qchip on" data-q="all">All</button>
+        <button class="qchip" data-q="Q1">Q1</button>
+        <button class="qchip" data-q="Q2">Q2</button>
+        <button class="qchip" data-q="Q3">Q3</button>
+        <button class="qchip" data-q="Q4">Q4</button>
+      </div>
+      <select id="famMonth" class="msel">
+        <option value="all">All months</option>
+        <option value="Apr-26">Apr-26</option>
+        <option value="May-26">May-26</option>
+        <option value="Jun-26">Jun-26</option>
+        <option value="Jul-26">Jul-26</option>
+        <option value="Aug-26">Aug-26</option>
+        <option value="Sep-26">Sep-26</option>
+        <option value="Oct-26">Oct-26</option>
+        <option value="Nov-26">Nov-26</option>
+        <option value="Dec-26">Dec-26</option>
+        <option value="Jan-27">Jan-27</option>
+        <option value="Feb-27">Feb-27</option>
+        <option value="Mar-27">Mar-27</option>
+      </select>
+      <div class="search"><input id="famSearch" placeholder="Search project / city…"></div>
+    </div>
+  </div>
+  <div class="scroll-tall" id="famMatrix"></div>
+</div>
+
+<!-- Row 4: Detailed walkthrough calendar by quarter -->
+<div class="section-h" id="sec-wt-plan">Project wise Walkthrough Plan</div>
+<div class="panel flat">
+  <div style="padding: 14px 16px; display:flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--rule);">
+    <div>
+      <div class="panel-title">38 Wings · 18 Projects · 8 Cities</div>
+    </div>
+    <div class="search"><input id="wtSearch" placeholder="Search project / city / month / Q1…"></div>
+  </div>
+  <div class="scroll-tall">
+    <table class="dt" id="wtTable">
+      <thead>
+        <tr>
+          <th class="l">#</th>
+          <th class="l">Project / Wing</th>
+          <th class="l">City</th>
+          <th class="l">Walkthrough Date</th>
+          <th class="l">Quarter</th>
+          <th>Units</th>
+          <th>SBA (sft)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ================ OC CALENDAR (Annexure 1c · Page 47) ================ -->
+<div class="section-h" id="sec-oc-cal">OC Calendar</div>
+<div class="panel flat">
+  <div style="padding: 14px 16px; display:flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--rule);">
+    <div>
+      <div class="panel-title">45 Wings · 20 Projects · 9 Cities</div>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <div class="qchips" data-target="oc">
+        <button class="qchip on" data-q="all">All</button>
+        <button class="qchip" data-q="Q1">Q1</button>
+        <button class="qchip" data-q="Q2">Q2</button>
+        <button class="qchip" data-q="Q3">Q3</button>
+        <button class="qchip" data-q="Q4">Q4</button>
+      </div>
+      <select id="ocMonth" class="msel">
+        <option value="all">All months</option>
+        <option value="Apr-26">Apr-26</option>
+        <option value="May-26">May-26</option>
+        <option value="Jun-26">Jun-26</option>
+        <option value="Jul-26">Jul-26</option>
+        <option value="Aug-26">Aug-26</option>
+        <option value="Sep-26">Sep-26</option>
+        <option value="Oct-26">Oct-26</option>
+        <option value="Nov-26">Nov-26</option>
+        <option value="Dec-26">Dec-26</option>
+        <option value="Jan-27">Jan-27</option>
+        <option value="Feb-27">Feb-27</option>
+        <option value="Mar-27">Mar-27</option>
+      </select>
+      <div class="search"><input id="ocSearch" placeholder="Search project / city…"></div>
+    </div>
+  </div>
+  <div class="scroll-tall" id="ocMatrix"></div>
+</div>
+<!-- Project OC Plan table -->
+<div class="section-h" id="sec-oc-plan">Project wise OC Plan</div>
+<div class="panel flat">
+  <div style="padding: 14px 16px; display:flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--rule);">
+    <div>
+      <div class="panel-title">45 Wings · 20 Projects · 9 Cities</div>
+    </div>
+    <div class="search"><input id="ocTblSearch" placeholder="Search project / city / month / Q1…"></div>
+  </div>
+  <div class="scroll-tall">
+    <table class="dt" id="ocTable">
+      <thead>
+        <tr>
+          <th class="l">#</th>
+          <th class="l">Project / Wing</th>
+          <th class="l">City</th>
+          <th class="l">OC Month</th>
+          <th class="l">Quarter</th>
+          <th>Units</th>
+          <th>SBA (sft)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+<div class="foot">
+  <span>INTERNAL AND CONFIDENTIAL</span>
+</div>
+
+<div class="tt" id="tooltip"></div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function(){
+  const btn = document.getElementById('backToTop');
+  let timer = null;
+  let lastY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < 100) { btn.classList.remove('show'); return; }
+    if (window.scrollY === lastY) return;
+    lastY = window.scrollY;
+    btn.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(() => btn.classList.remove('show'), 3000);
+  });
+  btn.addEventListener('mouseenter', () => clearTimeout(timer));
+  btn.addEventListener('mouseleave', () => { timer = setTimeout(() => btn.classList.remove('show'), 1500); });
+})();
+</script>
+
+<script src="data.js"></script>
+<script src="walkthrough.js"></script>
+<script src="../../site.js"></script>
+</body>
+</html>
