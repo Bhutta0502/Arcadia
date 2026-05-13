@@ -10,7 +10,7 @@
     // Compute the path back to project root based on known structure.
     // Only the UAE Year-End page sits in a subfolder; everything else is at root.
     var path = window.location.pathname;
-    var root = /\/uae\/finance\/2025-year-end\//.test(path) ? '../../../' : '';
+    var root = /\/uae\/finance\/2025-year-end\//.test(path) ? '../../../' : (/\/india\/opfy27\//.test(path) ? '../../' : '');
     // Mini monoline icons — 16x16
     var icons = {
       sales:   '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 L6 8 L9 10 L14 4"/><path d="M10 4 L14 4 L14 8"/></svg>',
@@ -25,6 +25,7 @@
     var isSalesPlan = /\/index\.html$|\/$/.test(path) && !/\/uae\//.test(path);
     var isYearEnd = /\/uae\/finance\/2025-year-end\//.test(path);
     var isIndia = /\/india\.html$/.test(path);
+    var isOpPlan = /\/india\/opfy27\//.test(path);
     var isArcadia = /\/index\.html$|\/$/.test(path) && !/\/uae\//.test(path) && !isSalesPlan;
     var isUAE = /\/uae\.html$/.test(path);
     // Active tab detection (from ?tab= or #tab=)
@@ -44,10 +45,10 @@
       '  <nav class="drawer-nav">' +
       '    <div class="dr-section" style="--i:0">' +
       '      <div class="dr-head-row">' +
-      '        <a href="' + root + 'india.html" class="dr-head' + active(isIndia) + '">India</a>' +
+      '        <a href="' + root + 'india.html" class="dr-head' + active(isIndia || isOpPlan) + '">India</a>' +
       '      </div>' +
       '      <div class="dr-sub">' +
-      '        <a class="dr-sub-head-big" href="' + root + 'index.html?tab=overview">Operational Plan</a>' +
+      '        <a class="dr-sub-head-big" href="' + root + 'india/opfy27/index.html">Operational Plan</a>' +
       '      </div>' +
       '      <div class="dr-sub">' +
       '        <a class="dr-sub-head-big" href="' + root + 'index.html">Commercial</a>' +
