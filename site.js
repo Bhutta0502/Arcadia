@@ -48,13 +48,6 @@
       '      </div>' +
       '      <div class="dr-sub">' +
       '        <a class="dr-sub-head-big" href="' + root + 'index.html?tab=overview">Operational Plan</a>' +
-      '        <ul>' +
-      '          <li><a class="dr-item' + tabActive('summary') + '" href="' + root + 'index.html?tab=summary"><span class="dr-ic">' + icons.sales + '</span><span class="dr-label">Sales &amp; Launches</span></a></li>' +
-      '          <li><a class="dr-item' + tabActive('walkthrough') + '" href="' + root + 'index.html?tab=walkthrough"><span class="dr-ic">' + icons.walk + '</span><span class="dr-label">Walkthrough &amp; OC Report</span></a></li>' +
-      '          <li><a class="dr-item' + tabActive('cashflow') + '" href="' + root + 'index.html?tab=cashflow"><span class="dr-ic">' + icons.flow + '</span><span class="dr-label">Cashflow Statement</span></a></li>' +
-      '          <li><a class="dr-item' + tabActive('pnl') + '" href="' + root + 'index.html?tab=pnl"><span class="dr-ic">' + icons.pl + '</span><span class="dr-label">P&amp;L Statement</span></a></li>' +
-      '          <li><a class="dr-item' + tabActive('overheads') + '" href="' + root + 'index.html?tab=overheads"><span class="dr-ic">' + icons.stack + '</span><span class="dr-label">Overheads</span></a></li>' +
-      '        </ul>' +
       '      </div>' +
       '      <div class="dr-sub">' +
       '        <a class="dr-sub-head-big" href="' + root + 'index.html">Commercial</a>' +
