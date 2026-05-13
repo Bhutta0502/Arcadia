@@ -1066,8 +1066,8 @@ function App() {
           <img src="assets/arcadia_logo.png" alt="Arcadia" className="arcadia-logo" style={{ width: "auto", display: "block", height: "20px" }} />
         </div>
         <nav className="floor-tabs">
-          <a className="floor-tab active" href="Arcadia Ground Floor.html">Ground Floor</a>
-          <a className="floor-tab" href="Arcadia First Floor.html">First Floor</a>
+          <a className="floor-tab active" href="index.html">Ground Floor</a>
+          <a className="floor-tab" href="Arcadia_First_Floor.html">First Floor</a>
         </nav>
       </header>
 
