@@ -106,7 +106,7 @@
       if (input.value === AUTH_PASSWORD) {
         try { sessionStorage.setItem(AUTH_KEY, '1'); } catch(e) {}
         var path = (location.pathname || '').replace(/\/+$/, '');
-        var isHome = /(^|\/)home\.html$/i.test(path) || path === '' || /\/$/.test(location.pathname);
+        var isHome = /(^|\/)home\.html$/i.test(path);
         if (!isHome) {
           location.href = (base || '') + 'home.html';
           return;
